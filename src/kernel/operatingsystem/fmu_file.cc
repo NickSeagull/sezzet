@@ -15,7 +15,9 @@ using std::make_shared;
 
 
 
-FmuFile::~FmuFile(){}
+FmuFile::~FmuFile(){
+	remove_all(path(working_directory_path_));
+}
 
 FmuFile::FmuFile(string fmu_file_path) :
 	unzipper_(make_shared<MinizipUnzipper>(fmu_file_path)),
@@ -38,4 +40,10 @@ string FmuFile::BuildTemporaryDirectoryPath(){
 
 string FmuFile::working_directory_path(){
 	return working_directory_path_;
+}
+
+string FmuFile::GetModelDescriptionPathAfterExtractingIt(){
+	string model_description_file_name = "modelDescription.xml";
+	unzipper_->ExtractTo(working_directory_path_, model_description_file_name);
+	return working_directory_path_ + "/" + model_description_file_name;
 }
