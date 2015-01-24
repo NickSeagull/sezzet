@@ -44,7 +44,8 @@ private:
 	shared_ptr<Unzipper> unzipper_;
 	string working_directory_path_;
 	string fmu_file_path_;
-	string MakeTemporalDirectory();
+	string MakeTemporaryDirectory();
+	string BuildTemporaryDirectoryPath();
 };
 
 #endif

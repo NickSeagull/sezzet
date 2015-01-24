@@ -16,14 +16,17 @@ using std::make_shared;
 FmuFile::FmuFile(string fmu_file_path) :
 	unzipper_(make_shared<MinizipUnzipper>(fmu_file_path)),
 	fmu_file_path_(fmu_file_path),
-	working_directory_path_(MakeTemporalDirectory()){}
+	working_directory_path_(MakeTemporaryDirectory()){}
 
-string FmuFile::MakeTemporalDirectory(){
-	string temp_folder =
-		temp_directory_path().string() +
+string FmuFile::MakeTemporaryDirectory(){
+	string temp_folder = BuildTemporaryDirectoryPath();
+	create_directory(path(temp_folder));
+	return temp_folder;
+}
+
+string FmuFile::BuildTemporaryDirectoryPath(){
+	return temp_directory_path().string() +
 		"/fmu_" +
 		lexical_cast<string>(duration_cast<milliseconds> (high_resolution_clock::now().time_since_epoch()).count()) +
 		path(fmu_file_path_).stem().string();
-	create_directory(path(temp_folder));
-	return temp_folder;
 }
