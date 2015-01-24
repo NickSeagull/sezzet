@@ -3,31 +3,30 @@
 
 #include "unzipper.h"
 #include "minizip_unzipper.h"
-#include "file_constants.h"
 #include <memory>
 #include <stdexcept>
 
 #ifdef _WIN32
-string system_extension = kWindowsLibraryExtension;
+#define SYSTEM_EXTENSION ".dll"
 #ifdef _WIN64
-string system_folder = kWindowsFolder + kArch64;
+#define SYSTEM_FOLDER "win64"
 #else
-string system_folder = kWindowsFolder + kArch32;
+#define SYSTEM_FOLDER "win32"
 #endif
 #endif
 
 #ifdef __APPLE__
 #include "TargetConditionals.h"
-string system_folder = kMacOsFolder + kArch64;
-string system_extension = kMacOsLibraryExtension;
+#define SYSTEM_FOLDER "darwin64"
+#define SYSTEM_EXTENSION ".dylib"
 #endif
 
 #ifdef __linux__
-string system_extension = kLinuxLibraryExtension;
+#define SYSTEM_EXTENSION ".so"
 #ifdef __amd64__
-string system_folder = kLinuxFolder + kArch64;
+#define SYSTEM_FOLDER "linux64"
 #else
-string system_folder = kLinuxFolder + kArch32;
+#define SYSTEM_FOLDER "linux32"
 #endif
 #endif
 
@@ -40,10 +39,11 @@ public:
 	~FmuFile();
 	string GetModelDescriptionPathAfterExtractingIt();
 	string GetLibraryPathAfterExtractingIt();
+	string working_directory_path();
 private:
 	shared_ptr<Unzipper> unzipper_;
-	string working_directory_path_;
 	string fmu_file_path_;
+	string working_directory_path_;
 	string MakeTemporaryDirectory();
 	string BuildTemporaryDirectoryPath();
 };
