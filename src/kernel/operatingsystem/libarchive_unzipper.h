@@ -3,10 +3,8 @@
 #include "../../../include/libarchive/archive.h"
 #include <string>
 #include "unzipper.h"
-#include <memory>
 
 using std::string;
-using std::shared_ptr;
 
 class LibArchiveUnzipper: public Unzipper {
 public:
