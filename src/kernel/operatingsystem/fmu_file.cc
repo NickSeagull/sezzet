@@ -20,7 +20,7 @@ FmuFile::~FmuFile(){
 }
 
 FmuFile::FmuFile(string fmu_file_path) :
-	unzipper_(make_shared<MinizipUnzipper>(fmu_file_path)),
+//	unzipper_(make_shared<MinizipUnzipper>(fmu_file_path)),
 	fmu_file_path_(fmu_file_path),
 	working_directory_path_(MakeTemporaryDirectory()){}
 
@@ -44,6 +44,6 @@ string FmuFile::working_directory_path(){
 
 string FmuFile::GetModelDescriptionPathAfterExtractingIt(){
 	string model_description_file_name = "modelDescription.xml";
-	unzipper_->ExtractTo(working_directory_path_, model_description_file_name);
+	unzipper_->ExtractToOrDie(working_directory_path_, model_description_file_name);
 	return working_directory_path_ + "/" + model_description_file_name;
 }

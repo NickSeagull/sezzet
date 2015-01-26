@@ -2,7 +2,6 @@
 #define KERNEL_OPERATINGSYSTEM_FMUFILE_H_
 
 #include "unzipper.h"
-#include "minizip_unzipper.h"
 #include <memory>
 #include <stdexcept>
 

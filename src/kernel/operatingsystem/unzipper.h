@@ -8,6 +8,6 @@ class Unzipper {
 protected:
 	string file_name_;
 public:
-	virtual void ExtractTo(string output_path, string file_name) = 0;
+	virtual void ExtractToOrDie(string output_path, string file_name) = 0;
 };
 #endif
