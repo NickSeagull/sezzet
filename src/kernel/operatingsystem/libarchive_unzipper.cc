@@ -30,12 +30,17 @@ void LibArchiveUnzipper::OpenZipArchiveOrDie(){
 }
 
 LibArchiveUnzipper::~LibArchiveUnzipper(){
+	CloseZipArchiveOrDie();
+}
+
+void LibArchiveUnzipper::CloseZipArchiveOrDie(){
 	if(archive_read_free(zip_file_) != ARCHIVE_OK) throw runtime_error("Could not close zipfile " + file_name_);
 }
 
 void LibArchiveUnzipper::ExtractToOrDie(string destiny_path, string file_to_extract){
 	bool did_not_finish_reading = true;
 	while(ReadNextHeader() && (did_not_finish_reading = !ExtractEntryIfEqualsFileToExtract(destiny_path, file_to_extract)));
+	ResetHeader();
 }
 
 bool LibArchiveUnzipper::ReadNextHeader(){
@@ -68,6 +73,10 @@ string LibArchiveUnzipper::BuildDestinyFilePath(string destiny_path, string file
 	return destiny_path + "/" + file_name;
 }
 
+void LibArchiveUnzipper::ResetHeader(){
+	archive_seek_data(zip_file_, 0, SEEK_SET);
+}
+
 void LibArchiveUnzipper::WriteEntryIntoFile(ofstream &output_file){
 	char buffer[kBufferSize] = {0};
 	int read_size = 0;
@@ -82,6 +91,7 @@ int LibArchiveUnzipper::SizeAfterReading(char* buffer){
 void LibArchiveUnzipper::ExtractFolderToOrDie(string destiny_path, string folder_name){
 	bool did_not_finish_reading = true;
 	while(ReadNextHeader() && (did_not_finish_reading = !ExtractEntryIfItIsInsideFolder(destiny_path, folder_name)));
+	ResetHeader();
 }
 
 bool LibArchiveUnzipper::ExtractEntryIfItIsInsideFolder(string destiny_path, string folder_name){

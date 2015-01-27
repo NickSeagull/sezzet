@@ -36,15 +36,22 @@ class FmuFile {
 public:
 	FmuFile(string fmu_file_path);
 	~FmuFile();
-	string GetModelDescriptionPathAfterExtractingIt();
-	string GetLibraryPathAfterExtractingIt();
+	void Extract();
 	string working_directory_path();
+	string model_description_path();
+	string library_path();
 private:
 	shared_ptr<Unzipper> unzipper_;
 	string fmu_file_path_;
 	string working_directory_path_;
+	string model_description_path_;
+	string library_path_;
+	string GetModelDescriptionPathAfterExtractingIt();
+	string GetLibraryPathAfterExtractingIt();
 	string MakeTemporaryDirectory();
 	string BuildTemporaryDirectoryPath();
+	string BuildLibraryPathInsideZip();
+	string GetModelName();
 };
 
 #endif

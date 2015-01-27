@@ -29,5 +29,7 @@ private:
 	string BuildDestinyFilePath(string destiny_path, string file_name);
 	bool ExtractEntryIfItIsInsideFolder(string destiny_path, string folder_name);
 	bool EntryNameContains(string folder_name);
+	void ResetHeader();
+	void CloseZipArchiveOrDie();
 };
 #endif
