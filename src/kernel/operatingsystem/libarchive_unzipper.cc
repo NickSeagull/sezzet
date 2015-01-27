@@ -1,14 +1,13 @@
 #include "libarchive_unzipper.h"
 #include "../../../include/libarchive/archive_entry.h"
 #include <stdexcept>
-#include <iostream>
 #include <ostream>
 #include <fstream>
+#include <boost/filesystem.hpp>
 
 using std::runtime_error;
-using std::cout;
-using std::endl;
 using std::ofstream;
+using boost::filesystem::path;
 
 const int kBlockSize = 10240;
 const int kBufferSize = 4096;
@@ -36,8 +35,7 @@ LibArchiveUnzipper::~LibArchiveUnzipper(){
 
 void LibArchiveUnzipper::ExtractToOrDie(string destiny_path, string file_to_extract){
 	bool did_not_finish_reading = true;
-	while(ReadNextHeader() && did_not_finish_reading)
-		did_not_finish_reading = !ExtractEntryIfEqualsFileToExtract(destiny_path, file_to_extract);
+	while(ReadNextHeader() && (did_not_finish_reading = !ExtractEntryIfEqualsFileToExtract(destiny_path, file_to_extract)));
 }
 
 bool LibArchiveUnzipper::ReadNextHeader(){
@@ -58,6 +56,8 @@ bool LibArchiveUnzipper::EntryNameEquals(string file_name){
 }
 
 void LibArchiveUnzipper::ExtractEntry(string destiny_path){
+	path destiny(destiny_path);
+	create_directories(destiny.parent_path());
 	ofstream output_file(destiny_path, ofstream::binary);
 	WriteEntryIntoFile(output_file);
 	output_file.close();
@@ -79,3 +79,21 @@ int LibArchiveUnzipper::SizeAfterReading(char* buffer){
 	return archive_read_data(zip_file_, buffer, kBufferSize);
 }
 
+void LibArchiveUnzipper::ExtractFolderToOrDie(string destiny_path, string folder_name){
+	bool did_not_finish_reading = true;
+	while(ReadNextHeader() && (did_not_finish_reading = !ExtractEntryIfItIsInsideFolder(destiny_path, folder_name)));
+}
+
+bool LibArchiveUnzipper::ExtractEntryIfItIsInsideFolder(string destiny_path, string folder_name){
+	if(EntryNameContains(folder_name)) {
+		string file_to_extract(archive_entry_pathname(current_zip_entry_));
+		ExtractEntry(BuildDestinyFilePath(destiny_path, file_to_extract));
+		return true;
+	}
+	return false;	
+}
+
+bool LibArchiveUnzipper::EntryNameContains(string folder_name){
+	string current_file_name(archive_entry_pathname(current_zip_entry_));
+	return (current_file_name.find(folder_name) != string::npos);
+}

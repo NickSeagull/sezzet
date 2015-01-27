@@ -9,5 +9,6 @@ protected:
 	string file_name_;
 public:
 	virtual void ExtractToOrDie(string output_path, string file_name) = 0;
+	virtual void ExtractFolderToOrDie(string output_path, string folder_name) = 0;
 };
 #endif

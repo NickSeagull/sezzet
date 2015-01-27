@@ -13,6 +13,7 @@ public:
 	LibArchiveUnzipper(string file_name);
 	~LibArchiveUnzipper();
 	void ExtractToOrDie(string output_path, string file_name);
+	void ExtractFolderToOrDie(string output_path, string folder_name);
 private:
     archive *zip_file_;
 	archive_entry *current_zip_entry_;
@@ -26,5 +27,7 @@ private:
 	void ExtractEntry(string destiny_path);
 	bool ExtractEntryIfEqualsFileToExtract(string destiny_path, string file_name);
 	string BuildDestinyFilePath(string destiny_path, string file_name);
+	bool ExtractEntryIfItIsInsideFolder(string destiny_path, string folder_name);
+	bool EntryNameContains(string folder_name);
 };
 #endif
