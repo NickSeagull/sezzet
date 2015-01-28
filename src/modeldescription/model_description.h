@@ -1,8 +1,0 @@
-#ifndef MODELDESCRIPTION_MODELDESCRIPTION_H_
-#define MODELDESCRIPTION_MODELDESCRIPTION_H_
-
-class ModelDescription {
-	
-};
-
-#endif

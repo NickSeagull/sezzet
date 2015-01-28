@@ -16,10 +16,6 @@ using std::make_shared;
 
 
 
-FmuFile::~FmuFile(){
-	remove_all(path(working_directory_path_));
-}
-
 FmuFile::FmuFile(string fmu_file_path) :
 	unzipper_(make_shared<LibArchiveUnzipper>(fmu_file_path)),
 	fmu_file_path_(fmu_file_path),
@@ -76,4 +72,8 @@ string FmuFile::library_path(){
 
 string FmuFile::model_description_path(){
 	return model_description_path_;
+}
+
+FmuFile::~FmuFile(){
+	remove_all(path(working_directory_path_));
 }
