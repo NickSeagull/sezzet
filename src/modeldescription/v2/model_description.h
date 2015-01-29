@@ -4,6 +4,15 @@
 #include <unordered_map>
 #include <string>
 #include <vector>
+#include "unit.h"
+#include "simple_type.h"
+#include "category.h"
+#include "default_experiment.h"
+#include "tool.h"
+#include "scalar_variable.h"
+#include "model_structure.h"
+#include "model_exchange.h"
+#include "co_simulation.h"
 
 using std::unordered_map;
 using std::string;
