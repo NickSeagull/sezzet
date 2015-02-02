@@ -4,10 +4,12 @@
 #include <ostream>
 #include <fstream>
 #include <boost/filesystem.hpp>
+#include <algorithm>
 
 using std::runtime_error;
 using std::ofstream;
 using boost::filesystem::path;
+using std::find;
 
 const int kBlockSize = 10240;
 const int kBufferSize = 4096;
@@ -58,16 +60,16 @@ bool LibArchiveUnzipper::ExtractEntryIfEqualsFileToExtract(string destiny_path, 
 }
 
 bool LibArchiveUnzipper::EntryNameEquals(string file_name){
-	string entry_name(archive_entry_pathname(current_zip_entry_));
-	return (entry_name == file_name.c_str());
+	return (CurrentEntryName() == file_name.c_str());
 }
 
-void LibArchiveUnzipper::ExtractEntry(string destiny_path){
+bool LibArchiveUnzipper::ExtractEntry(string destiny_path){
 	path destiny(destiny_path);
 	create_directories(destiny.parent_path());
 	ofstream output_file(destiny_path, ofstream::binary);
 	WriteEntryIntoFile(output_file);
 	output_file.close();
+	return true;
 }
 
 string LibArchiveUnzipper::BuildDestinyFilePath(string destiny_path, string file_name){
@@ -100,22 +102,27 @@ void LibArchiveUnzipper::ExtractFolderToOrDie(string destiny_path, string folder
 }
 
 bool LibArchiveUnzipper::ExtractEntryIfItIsInsideFolder(string destiny_path, string folder_name){
-	if(EntryNameContains(folder_name)) {
-		string file_to_extract(archive_entry_pathname(current_zip_entry_));
-		ExtractEntry(BuildDestinyFilePath(destiny_path, file_to_extract));
-		return true;
-	}
+	if(EntryNameContains(folder_name))
+		return ExtractEntry(BuildDestinyFilePath(destiny_path, CurrentEntryName()));
 	return false;	
 }
 
 bool LibArchiveUnzipper::EntryNameContains(string folder_name){
-	string current_file_name(archive_entry_pathname(current_zip_entry_));
-	return (current_file_name.find(folder_name) != string::npos);
+	return (CurrentEntryName().find(folder_name) != string::npos);
 }
 
 void LibArchiveUnzipper::LoadEntries(){
-	while(ReadNextHeader()){
-		string current_file_name(archive_entry_pathname(current_zip_entry_));
-		entries_.push_back(current_file_name);
-	}
+	while(ReadNextHeader()) SaveEntryName();
+}
+
+void LibArchiveUnzipper::SaveEntryName(){
+	entries_.push_back(CurrentEntryName());
+}
+
+string LibArchiveUnzipper::CurrentEntryName(){
+	return archive_entry_pathname(current_zip_entry_);
+}
+
+bool LibArchiveUnzipper::HasFile(string file_name){
+	return (find(begin(entries_), end(entries_), file_name) != end(entries_));
 }

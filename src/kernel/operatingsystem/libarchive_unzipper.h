@@ -8,7 +8,6 @@
 
 using std::string;
 using std::ofstream;
-using std::vector;
 
 class LibArchiveUnzipper: public Unzipper {
 public:
@@ -16,10 +15,10 @@ public:
 	~LibArchiveUnzipper();
 	void ExtractToOrDie(string output_path, string file_name);
 	void ExtractFolderToOrDie(string output_path, string folder_name);
+	bool HasFile(string file_name);
 private:
-    archive *zip_file_;
+	archive *zip_file_;
 	archive_entry *current_zip_entry_;
-	vector<string> entries_;
 	void ConfigureZipFile();
 	void OpenZipArchiveOrDie();
 	bool ReadNextHeader();
@@ -27,7 +26,7 @@ private:
 	bool EntryNameEquals(string file_name);
 	void WriteEntryIntoFile(ofstream &output_file);
 	int SizeAfterReading(char* buffer);
-	void ExtractEntry(string destiny_path);
+	bool ExtractEntry(string destiny_path);
 	bool ExtractEntryIfEqualsFileToExtract(string destiny_path, string file_name);
 	string BuildDestinyFilePath(string destiny_path, string file_name);
 	bool ExtractEntryIfItIsInsideFolder(string destiny_path, string folder_name);
@@ -35,5 +34,7 @@ private:
 	void ResetHeader();
 	void CloseZipArchiveOrDie();
 	void LoadEntries();
+	void SaveEntryName();
+	string CurrentEntryName();
 };
 #endif
