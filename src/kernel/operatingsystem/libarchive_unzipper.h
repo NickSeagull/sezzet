@@ -19,6 +19,7 @@ public:
 private:
     archive *zip_file_;
 	archive_entry *current_zip_entry_;
+	vector<string> entries_;
 	void ConfigureZipFile();
 	void OpenZipArchiveOrDie();
 	bool ReadNextHeader();
@@ -33,5 +34,6 @@ private:
 	bool EntryNameContains(string folder_name);
 	void ResetHeader();
 	void CloseZipArchiveOrDie();
+	void LoadEntries();
 };
 #endif

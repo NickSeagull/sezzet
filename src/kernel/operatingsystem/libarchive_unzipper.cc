@@ -17,6 +17,7 @@ LibArchiveUnzipper::LibArchiveUnzipper(string file_name):
 	file_name_ = file_name;
 	ConfigureZipFile();
 	OpenZipArchiveOrDie();
+	LoadEntries();
 }
 
 void LibArchiveUnzipper::ConfigureZipFile(){
@@ -112,3 +113,9 @@ bool LibArchiveUnzipper::EntryNameContains(string folder_name){
 	return (current_file_name.find(folder_name) != string::npos);
 }
 
+void LibArchiveUnzipper::LoadEntries(){
+	while(ReadNextHeader()){
+		string current_file_name(archive_entry_pathname(current_zip_entry_));
+		entries_.push_back(current_file_name);
+	}
+}
