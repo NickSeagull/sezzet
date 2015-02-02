@@ -4,9 +4,11 @@
 #include <string>
 #include "unzipper.h"
 #include <fstream>
+#include <vector>
 
 using std::string;
 using std::ofstream;
+using std::vector;
 
 class LibArchiveUnzipper: public Unzipper {
 public:

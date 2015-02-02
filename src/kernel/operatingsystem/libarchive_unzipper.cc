@@ -25,8 +25,8 @@ void LibArchiveUnzipper::ConfigureZipFile(){
 }
 
 void LibArchiveUnzipper::OpenZipArchiveOrDie(){
-	if (archive_read_open_filename(zip_file_, file_name_.c_str(), kBlockSize) == ARCHIVE_OK) return;
-	throw runtime_error("Could not open ziparchive" + file_name_);
+	if (archive_read_open_filename(zip_file_, file_name_.c_str(), kBlockSize) != ARCHIVE_OK)
+		throw runtime_error("Could not open ziparchive" + file_name_);
 }
 
 LibArchiveUnzipper::~LibArchiveUnzipper(){
@@ -34,6 +34,7 @@ LibArchiveUnzipper::~LibArchiveUnzipper(){
 }
 
 void LibArchiveUnzipper::CloseZipArchiveOrDie(){
+	if(archive_read_close(zip_file_) != ARCHIVE_OK) throw runtime_error("Could not close zipfile " + file_name_);
 	if(archive_read_free(zip_file_) != ARCHIVE_OK) throw runtime_error("Could not close zipfile " + file_name_);
 }
 
@@ -74,7 +75,10 @@ string LibArchiveUnzipper::BuildDestinyFilePath(string destiny_path, string file
 }
 
 void LibArchiveUnzipper::ResetHeader(){
-	archive_seek_data(zip_file_, 0, SEEK_SET);
+	CloseZipArchiveOrDie();
+	zip_file_ = archive_read_new();
+	ConfigureZipFile();	
+	OpenZipArchiveOrDie();
 }
 
 void LibArchiveUnzipper::WriteEntryIntoFile(ofstream &output_file){
@@ -107,3 +111,4 @@ bool LibArchiveUnzipper::EntryNameContains(string folder_name){
 	string current_file_name(archive_entry_pathname(current_zip_entry_));
 	return (current_file_name.find(folder_name) != string::npos);
 }
+

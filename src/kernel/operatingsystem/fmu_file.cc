@@ -35,9 +35,7 @@ string FmuFile::BuildTemporaryDirectoryPath(){
 	return temp_folder_path;
 }
 
-string FmuFile::working_directory_path(){
-	return working_directory_path_;
-}
+inline string FmuFile::working_directory_path(){return working_directory_path_;}
 
 string FmuFile::GetModelDescriptionPathAfterExtractingIt(){
 	string model_description_file_name = "modelDescription.xml";
@@ -66,13 +64,9 @@ void FmuFile::Extract(){
 	model_description_path_ = this->GetModelDescriptionPathAfterExtractingIt();
 }
 
-string FmuFile::library_path(){
-	return library_path_;
-}
+inline string FmuFile::library_path(){return library_path_;}
 
-string FmuFile::model_description_path(){
-	return model_description_path_;
-}
+inline string FmuFile::model_description_path(){return model_description_path_;}
 
 FmuFile::~FmuFile(){
 	remove_all(path(working_directory_path_));
