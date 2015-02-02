@@ -9,11 +9,17 @@ using std::string;
 
 class Unknown{
 private:
-    unordered_map<string, string> attributes_;
+	int index_;
+	string dependencies_;
+	string dependencies_kind_;	
 public:
+	inline string dependencies_kind();
+	inline void dependencies_kind(string new_dependencies_kind);
+	inline void dependencies(string new_dependencies);
+	inline string dependencies();
+	inline void index(int new_index);
+	inline int index();
     Unknown();
-    unordered_map<string, string> attributes();
-	void set_attributes(unordered_map<string, string> attributes);
 };
 
 

@@ -5,11 +5,19 @@
 
 using std::string;
 
-struct DisplayUnit{
+class DisplayUnit{
 private:
 	string name_;
 	double factor_;
 	double offset_;
+	
+public:
+	inline void offset(double new_offset);
+	inline double offset();
+	inline void factor(double new_factor);
+	inline double factor();
+	inline void name(string new_name);
+	inline string name();
 };
 
 #endif

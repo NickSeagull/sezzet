@@ -1,19 +1,17 @@
 #ifndef MODELDESCRIPTION_V2_TOOL_H_
 #define MODELDESCRIPTION_V2_TOOL_H_
 
-#include <unordered_map>
 #include <string>
 
-using std::unordered_map;
 using std::string;
 
 class Tool{
 private:
-    unordered_map<string, string> attributes_;
+	string name_;
 public:
+	inline void name(string new_name);
+	inline string name();
     Tool();
-	unordered_map<string, string> attributes();
-	void set_attributes(unordered_map<string, string> attributes);
 };
 
 
