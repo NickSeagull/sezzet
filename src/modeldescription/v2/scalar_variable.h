@@ -26,7 +26,7 @@ private:
 	shared_ptr<RealType> real_;
 	shared_ptr<IntegerType> integer_;
 	shared_ptr<BooleanType> boolean_;
-	shared_ptr<StringType> string_;
+	shared_ptr<StringType> stringg_;
 	shared_ptr<EnumerationType> enumeration_;
 	vector<shared_ptr<Tool>> annotations_;
 	shared_ptr<SimpleType> type_;
@@ -51,8 +51,8 @@ public:
 	inline void real(shared_ptr<RealType> real);
 	inline shared_ptr<IntegerType> integer();
 	inline void integer(shared_ptr<IntegerType> integer);
-	inline shared_ptr<StringType> string();
-	inline void string(shared_ptr<StringType> string);
+	inline shared_ptr<StringType> stringg();
+	inline void stringg(shared_ptr<StringType> stringg);
 	inline shared_ptr<EnumerationType> enumeration();
 	inline void enumeration(shared_ptr<EnumerationType> enumeration);
 	inline vector<shared_ptr<Tool>> annotations();

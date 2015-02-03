@@ -80,7 +80,7 @@ public:
 	unordered_map<string, ScalarVariable> model_variables();
 	Capabilities capabilities();
 	vector<string> variables_names();
-
+	ModelDescription();
 };
 
 #endif
