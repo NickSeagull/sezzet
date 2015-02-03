@@ -15,9 +15,6 @@ BOOST_FIXTURE_TEST_CASE( it_is_possible_to_initialize_deserializer , Fixture){
 }
 
 BOOST_FIXTURE_TEST_CASE( deserialized_model_description_is_not_null , Fixture){
-	model_description = deserializer->Deserialize(model_description, kModelDescriptionPath + kModelDescriptionFileName);
 	BOOST_CHECK(model_description != NULL);
 }
 
-BOOST_AUTO_TEST_CASE( deserializer_gets_the_fmi_version ){
-}

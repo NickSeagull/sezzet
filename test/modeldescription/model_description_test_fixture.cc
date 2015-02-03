@@ -11,15 +11,16 @@ using std::make_shared;
 struct Fixture {
     const string kModelDescriptionPath = "../test_resources/modeldescription/v2/";
     const string kModelDescriptionFileName = "modelDescription.xml";
-    auto make_deserializer(){
+    auto MakeDeserializer(){
         return make_shared<ModelDescriptionDeserializer>();
     }
-    auto make_model_description(){
+    auto MakeModelDescription(){
         return deserializer->Deserialize(make_shared<ModelDescription>(), kModelDescriptionPath + kModelDescriptionFileName);
     }
+	
     // Setup
-    Fixture():deserializer(make_deserializer()),
-	    	  model_description(make_model_description()){}
+    Fixture():deserializer(MakeDeserializer()),
+	    	  model_description(MakeModelDescription()){}
 	// TearDown
 	~Fixture(){
         deserializer = NULL;
