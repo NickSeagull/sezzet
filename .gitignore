@@ -1,2 +1,4 @@
 main.cc
 *.o
+/resources/model.png
+/resources/modelDescription.xml
