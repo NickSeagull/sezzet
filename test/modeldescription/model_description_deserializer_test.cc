@@ -14,6 +14,6 @@ BOOST_FIXTURE_TEST_CASE( deserialized_model_description_is_not_null , Fixture ){
 }
 
 BOOST_FIXTURE_TEST_CASE( deserializer_gets_the_fmi_version , Fixture ){
-	deserializer->Deserialize(model_description, "")
-		BOOST_CHECK(model_description->fmi_version() == "1.0");
+	deserializer->Deserialize(model_description, "");
+	BOOST_CHECK(model_description->fmi_version() == "1.0");
 }
