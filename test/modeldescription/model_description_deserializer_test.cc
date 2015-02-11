@@ -20,7 +20,8 @@ using boost::property_tree::ptree;
 using std::make_shared;
 using std::vector;
 
-std::string xml_file("/home/nick/Desarrollo/SIANI/sezzet/resources/modelDescription.xml");
+std::string bouncing_ball_xml_path("/home/nick/Desarrollo/SIANI/sezzet/resources/bouncing_ball_md.xml");
+std::string tank_xml_path("/home/nick/Desarrollo/SIANI/sezzet/resources/tank_md.xml");
 boost::test_tools::output_test_stream output;
 
 ptree MakeEmptyTree(){
@@ -47,7 +48,7 @@ BOOST_AUTO_TEST_CASE( a_node_will_be_filled_with_attributes_after_being_passed_t
 	Node node;
 	NodeFiller filler;
 	ptree property_tree;
-	read_xml(xml_file, property_tree);
+	read_xml(bouncing_ball_xml_path, property_tree);
 	string node_name = "fmiModelDescription";
 	ptree xml_subtree = property_tree.get_child(node_name, MakeEmptyTree());
 	filler.Fill(node, node_name, xml_subtree);
@@ -63,7 +64,7 @@ BOOST_AUTO_TEST_CASE( a_node_will_know_its_name_after_being_passed_to_a_node_fil
 	Node node;
 	NodeFiller filler;
 	ptree property_tree;
-	read_xml(xml_file, property_tree);
+	read_xml(bouncing_ball_xml_path, property_tree);
 	string node_name = "fmiModelDescription";
 	ptree xml_subtree = property_tree.get_child(node_name, MakeEmptyTree());
 	filler.Fill(node, node_name, xml_subtree);
@@ -74,7 +75,7 @@ BOOST_AUTO_TEST_CASE( a_node_will_have_other_nodes_as_childs_if_the_xml_has_that
 	Node node;
 	NodeFiller filler;
 	ptree property_tree;
-	read_xml(xml_file, property_tree);
+	read_xml(bouncing_ball_xml_path, property_tree);
 	string node_name = "fmiModelDescription";
 	ptree xml_subtree = property_tree.get_child(node_name, MakeEmptyTree());
 	filler.Fill(node, node_name, xml_subtree);
@@ -84,8 +85,8 @@ BOOST_AUTO_TEST_CASE( a_node_will_have_other_nodes_as_childs_if_the_xml_has_that
 
 BOOST_AUTO_TEST_CASE( deserializer_test ){
 	ModelDescription model_description;
-	ModelDescriptionDeserializer deserializer(xml_file);
+	ModelDescriptionDeserializer deserializer(tank_xml_path);
 	deserializer.deserialize(model_description);
-	BOOST_CHECK_EQUAL("myModel", model_description.model_name());
-	BOOST_CHECK_EQUAL("myModelIdentifier", model_description.co_simulation().model_identifier());
+	BOOST_CHECK_EQUAL("tankv3", model_description.model_name());
+	BOOST_CHECK_EQUAL("tankv3", model_description.co_simulation().model_identifier());
 }
