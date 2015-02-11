@@ -12,11 +12,12 @@
 #include "model_structure.h"
 #include "model_exchange.h"
 #include "co_simulation.h"
+#include "../elementtree/node.h"
 
 using std::string;
 using std::vector;
 
-class ModelDescription {
+class ModelDescription : public Node {
 private:
 	string fmi_version_;
 	string model_name_;
