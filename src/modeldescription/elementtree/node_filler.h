@@ -2,17 +2,22 @@
 #define MODELDESCRIPTION_ELEMENTTREE_NODEFILLER_H_
 
 #include "node.h"
-#include <boost/property_tree/ptree.hpp>
 #include <memory>
+#include <boost/property_tree/ptree.hpp>
 
-using boost::property_tree::ptree;
 using std::shared_ptr;
+using boost::property_tree::ptree;
 
 class NodeFiller{
 private:
+	ptree MakeEmptyTree();
+	ptree GetAttributeTree(ptree& xml_tree);
+	void FillWithAttributes(Node& node, ptree& xml_tree);
+	void FillWithChilds(Node& node, ptree& xml_tree);
+	void MakeAndAddChild(Node& node, ptree::value_type& xml_element);
 public:
-    NodeFiller();
-	void Fill(Node& node, ptree& xml_tree);
+	NodeFiller();
+	void Fill(Node& node, string node_name, ptree& xml_tree);
 };
 
 
