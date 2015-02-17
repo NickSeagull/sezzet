@@ -8,9 +8,10 @@ using std::string;
 
 class ModelDescriptionDeserializer{
 private:
+	string xml_path_;
 public:
     ModelDescriptionDeserializer(string xml_path);
-	void deserialize(ModelDescription model_description);
+	void Deserialize(ModelDescription& model_description);
 };
 
 

@@ -86,7 +86,7 @@ BOOST_AUTO_TEST_CASE( a_node_will_have_other_nodes_as_childs_if_the_xml_has_that
 BOOST_AUTO_TEST_CASE( deserializer_test ){
 	ModelDescription model_description;
 	ModelDescriptionDeserializer deserializer(tank_xml_path);
-	deserializer.deserialize(model_description);
+	deserializer.Deserialize(model_description);
 	BOOST_CHECK_EQUAL("tankv3", model_description.model_name());
 	BOOST_CHECK_EQUAL("tankv3", model_description.co_simulation().model_identifier());
 }

@@ -17,8 +17,10 @@
 using std::string;
 using std::vector;
 
-class ModelDescription : public Node {
+class ModelDescription {
 private:
+	Node node_;
+	
 	string fmi_version_;
 	string model_name_;
 	string guid_;
@@ -45,6 +47,8 @@ private:
 	Capabilities capabilities_;
 	vector<string> variables_names_;
 public:
+	void node(Node new_node);
+	Node node();
 	void number_of_event_indicators(int new_number_of_event_indicators);
 	int number_of_event_indicators();
 	void variable_naming_convention(string new_variable_naming_convention);
@@ -70,17 +74,28 @@ public:
 	void fmi_version(string new_fmi_version);
 	string fmi_version();
 	vector<Unit> unit_definitions();
+	void AddUnitDefinition(Unit unit_definition);
 	vector<SimpleType> type_definitions();
+	void AddTypeDefinition(SimpleType type_definition);
 	vector<Category> log_categories();
+	void AddLogCategory(Category log_category);
 	DefaultExperiment default_experiment();
+	void default_experiment(DefaultExperiment new_default_experiment);
 	vector<Tool> vendor_annotations();
+	void AddVendorAnnotations(Tool vendor_annotation);
 	vector<ScalarVariable> model_variables_list();
+	void AddModelVariable(ScalarVariable model_variable);
 	ModelStructure model_structure();
+	void model_structure(ModelStructure new_model_structure);
 	ModelExchange model_exchange();
+	void model_exchange(ModelExchange new_model_exchange);
 	CoSimulation co_simulation();
+	void co_simulation(CoSimulation new_co_simulation);
 	unordered_map<string, ScalarVariable> model_variables();
 	Capabilities capabilities();
+	void capabilities(Capabilities new_capabilities);
 	vector<string> variables_names();
+	void AddVariableName(string variable_name);
 	ModelDescription();
 };
 

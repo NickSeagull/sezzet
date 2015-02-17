@@ -2,6 +2,8 @@
 
 ModelDescription::ModelDescription(){}
 
+Node ModelDescription::node(){return node_;}
+void ModelDescription::node(Node new_node){node_ = new_node;}
 string ModelDescription::fmi_version(){return fmi_version_;}
 void ModelDescription::fmi_version(string new_fmi_version){fmi_version_ = new_fmi_version;}
 string ModelDescription::model_name(){return model_name_;}
@@ -26,6 +28,56 @@ string ModelDescription::variable_naming_convention(){return variable_naming_con
 void ModelDescription::variable_naming_convention(string new_variable_naming_convention){variable_naming_convention_ = new_variable_naming_convention;}
 int ModelDescription::number_of_event_indicators(){return number_of_event_indicators_;}
 void ModelDescription::number_of_event_indicators(int new_number_of_event_indicators){number_of_event_indicators_ = new_number_of_event_indicators;}
+
+vector<Unit> ModelDescription::unit_definitions(){return unit_definitions_;}
+vector<SimpleType> ModelDescription::type_definitions(){return type_definitions_;}
+vector<Category> ModelDescription::log_categories(){return log_categories_;}
+DefaultExperiment ModelDescription::default_experiment(){return default_experiment_;}
+void ModelDescription::default_experiment(DefaultExperiment new_default_experiment){default_experiment_ = new_default_experiment;}
+vector<Tool> ModelDescription::vendor_annotations(){return vendor_annotations_;}
+vector<ScalarVariable> ModelDescription::model_variables_list(){return model_variables_list_;}
+ModelStructure ModelDescription::model_structure(){return model_structure_;}
+void ModelDescription::model_structure(ModelStructure new_model_structure){model_structure_ = new_model_structure;}
+ModelExchange ModelDescription::model_exchange(){return model_exchange_;}
+void ModelDescription::model_exchange(ModelExchange new_model_exchange){model_exchange_ = new_model_exchange;}
+CoSimulation ModelDescription::co_simulation(){return co_simulation_;}
+void ModelDescription::co_simulation(CoSimulation new_co_simulation){co_simulation_ = new_co_simulation;}
+Capabilities ModelDescription::capabilities(){return capabilities_;}
+void ModelDescription::capabilities(Capabilities new_capabilities){capabilities_ = new_capabilities;}
+vector<string> ModelDescription::variables_names(){return variables_names_;}
+
+void ModelDescription::AddUnitDefinition(Unit unit_definition) {
+	unit_definitions_.push_back(unit_definition);
+}
+
+void ModelDescription::AddTypeDefinition(SimpleType type_definition) {
+	type_definitions_.push_back(type_definition);
+}
+
+void ModelDescription::AddLogCategory(Category log_category) {
+	log_categories_.push_back(log_category);
+}
+
+void ModelDescription::AddVendorAnnotations(Tool vendor_annotations) {
+	vendor_annotations_.push_back(vendor_annotations);
+}
+
+void ModelDescription::AddModelVariable(ScalarVariable model_variable) {
+
+}
+
+void ModelDescription::AddVariableName(string variable_name) {
+	variables_names_.push_back(variable_name);
+}
+
+
+
+
+
+
+
+
+
 
 
 
