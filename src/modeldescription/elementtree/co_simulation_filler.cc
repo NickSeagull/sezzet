@@ -1,5 +1,8 @@
 #include "co_simulation_filler.h"
 #include "source_file_filler.h"
+#include <memory>
+
+using std::make_shared;
 
 CoSimulationFiller::CoSimulationFiller(){}
 
@@ -46,4 +49,5 @@ void CoSimulationFiller::SetCapabilities(CoSimulation& co_simulation){
 	if (co_simulation.can_get_and_set_fmu_state()) capabilities.Add(Capabilities::kCanGetAndSetFmuState);
 	if (co_simulation.can_serialize_fmu_state()) capabilities.Add(Capabilities::kCanSerializeFmuState);
 	if (co_simulation.provides_directional_derivative()) capabilities.Add(Capabilities::kProvidesDirectionalDerivative);
+	co_simulation.capabilities(make_shared<Capabilities>(capabilities));
 }

@@ -9,29 +9,21 @@ using std::vector;
 
 class Capabilities{
 private:	
-    class Capability{
-	private:
-		string name_;
-	public:
-		Capability();
-		string name();
-	};
-	
-	const static Capability kNeedsExecutionTool;
-	const static Capability kCanHandleVariableCommunicationStepSize;
-	const static Capability kCanInterpolateInputs;
-	const static Capability kCanRunAsynchronously;
-	const static Capability kCanBeInstantiatedOnlyOncePerProcess;
-	const static Capability kCanNotUseMemoryManagmentFunction;
-	const static Capability kCanGetAndSetFmuState;
-	const static Capability kProvidesDirectionalDerivative;
-	
-	vector<Capability> capabilities_;
-	
+	vector<string> capabilities_;
 public:
+    const static string kNeedsExecutionTool;
+	const static string kCanHandleVariableCommunicationStepSize;
+	const static string kCanInterpolateInputs;
+	const static string kCanRunAsynchronously;
+	const static string kCanBeInstantiatedOnlyOncePerProcess;
+	const static string kCanNotUseMemoryManagmentFunction;
+	const static string kCanGetAndSetFmuState;
+	const static string kCanSerializeFmuState;
+	const static string kProvidesDirectionalDerivative;
+	
     Capabilities();
-    vector<Capability> contains();
-	void add(Capability capability);
+	bool Check(string capability);
+	void Add(string capability);
 };
 
 
