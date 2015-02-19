@@ -4,7 +4,6 @@
 ModelDescriptionFiller::ModelDescriptionFiller(){}
 
 void ModelDescriptionFiller::Fill(ModelDescription& model_description, Node& node) {
-	model_description.node(node);
 	for(auto& pair : node.attributes())
 		SetField(model_description, pair.first, pair.second);
 	for(auto child : node.childs())
