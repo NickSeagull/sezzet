@@ -1,4 +1,5 @@
 #include "co_simulation_filler.h"
+#include "source_file_filler.h"
 
 CoSimulationFiller::CoSimulationFiller(){}
 
@@ -7,6 +8,7 @@ void CoSimulationFiller::Fill(CoSimulation& co_simulation, shared_ptr<Node> node
 		SetField(co_simulation, pair.first, pair.second);
 	for(auto& child : node->childs())
 		SetChild(co_simulation, child);
+	SetCapabilities(co_simulation);
 }
 
 void CoSimulationFiller::SetField(CoSimulation& co_simulation, string field_name, string field_value){
@@ -32,4 +34,16 @@ void CoSimulationFiller::FillAndAddSourceFile(CoSimulation& co_simulation, share
 	SourceFile source_file;
 	filler.Fill(source_file, node);
 	co_simulation.AddSourceFile(source_file);
+}
+
+void CoSimulationFiller::SetCapabilities(CoSimulation& co_simulation){
+	Capabilities capabilities;
+	if (co_simulation.needs_execution_tool()) capabilities.Add(Capabilities::kNeedsExecutionTool);
+	if (co_simulation.can_interpolate_inputs()) capabilities.Add(Capabilities::kCanInterpolateInputs);
+	if (co_simulation.can_run_asynchronously()) capabilities.Add(Capabilities::kCanRunAsynchronously);
+	if (co_simulation.can_be_instantiated_only_once_per_process()) capabilities.Add(Capabilities::kCanBeInstantiatedOnlyOncePerProcess);
+	if (co_simulation.can_not_use_memory_management_functions()) capabilities.Add(Capabilities::kCanNotUseMemoryManagmentFunction);
+	if (co_simulation.can_get_and_set_fmu_state()) capabilities.Add(Capabilities::kCanGetAndSetFmuState);
+	if (co_simulation.can_serialize_fmu_state()) capabilities.Add(Capabilities::kCanSerializeFmuState);
+	if (co_simulation.provides_directional_derivative()) capabilities.Add(Capabilities::kProvidesDirectionalDerivative);
 }

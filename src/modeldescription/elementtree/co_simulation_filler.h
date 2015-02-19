@@ -12,6 +12,7 @@ private:
 	void SetField(CoSimulation& co_simulation, string field_name, string field_value);
 	void SetChild(CoSimulation& co_simulation, shared_ptr<Node> child);
 	void FillAndAddSourceFile(CoSimulation& co_simulation, shared_ptr<Node> child);
+	void SetCapabilities(CoSimulation& co_simulation);
 public:
 	CoSimulationFiller();
     void Fill(CoSimulation& co_simulation, shared_ptr<Node> node);
