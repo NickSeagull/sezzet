@@ -19,8 +19,6 @@ using std::vector;
 
 class ModelDescription {
 private:
-	Node node_;
-	
 	string fmi_version_;
 	string model_name_;
 	string guid_;
@@ -47,8 +45,6 @@ private:
 	Capabilities capabilities_;
 	vector<string> variables_names_;
 public:
-	void node(Node new_node);
-	Node node();
 	void number_of_event_indicators(int new_number_of_event_indicators);
 	int number_of_event_indicators();
 	void variable_naming_convention(string new_variable_naming_convention);

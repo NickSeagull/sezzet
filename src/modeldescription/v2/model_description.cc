@@ -2,8 +2,6 @@
 
 ModelDescription::ModelDescription(){}
 
-Node ModelDescription::node(){return node_;}
-void ModelDescription::node(Node new_node){node_ = new_node;}
 string ModelDescription::fmi_version(){return fmi_version_;}
 void ModelDescription::fmi_version(string new_fmi_version){fmi_version_ = new_fmi_version;}
 string ModelDescription::model_name(){return model_name_;}
