@@ -11,10 +11,10 @@ private:
 	string description_;
 	
 public:
-	inline void description(string new_description);
-	inline string description();
-	inline void name(string new_name);
-	inline string name();
+	void description(string new_description);
+	string description();
+	void name(string new_name);
+	string name();
 };
 
 #endif
