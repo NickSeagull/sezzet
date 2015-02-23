@@ -17,8 +17,8 @@ private:
 	vector<shared_ptr<DisplayUnit>> display_units_;
 	string name_;
 public:
-	inline void name(string new_name);
-	inline string name();
+	void name(string new_name);
+	string name();
 	BaseUnit base_unit();
 	void base_unit(BaseUnit base_unit);
 	vector<DisplayUnit> display_units();
