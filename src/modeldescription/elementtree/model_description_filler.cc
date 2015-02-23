@@ -1,5 +1,6 @@
 #include "model_description_filler.h"
 #include "co_simulation_filler.h"
+#include "model_exchange_filler.h"
 
 ModelDescriptionFiller::ModelDescriptionFiller(){}
 
@@ -27,6 +28,7 @@ void ModelDescriptionFiller::SetField(ModelDescription& model_description, strin
 
 void ModelDescriptionFiller::SetChild(ModelDescription& model_description, shared_ptr<Node> child){
 	if(child->name() == "CoSimulation") FillAndSetCoSimulation(model_description, child);
+	if(child->name() == "ModelExchange") FillAndSetModelExchange(model_description, child);
 }
 
 void ModelDescriptionFiller::FillAndSetCoSimulation(ModelDescription& model_description, shared_ptr<Node> node){
@@ -34,4 +36,10 @@ void ModelDescriptionFiller::FillAndSetCoSimulation(ModelDescription& model_desc
 	CoSimulation co_simulation;
 	filler.Fill(co_simulation, node);
 	model_description.co_simulation(co_simulation);
+}
+void ModelDescriptionFiller::FillAndSetModelExchange(ModelDescription& model_description, shared_ptr<Node> node){
+	ModelExchangeFiller filler;
+	ModelExchange model_exchange;
+	filler.Fill(model_exchange, node);
+	model_description.model_exchange(model_exchange);
 }

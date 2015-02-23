@@ -40,6 +40,7 @@ public:
     ModelExchange();
 	vector<SourceFile> source_files();
 	void set_source_files(vector<SourceFile> source_files);
+	void AddSourceFile(SourceFile source_file);
 };
 
 
