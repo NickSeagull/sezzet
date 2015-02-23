@@ -29,6 +29,7 @@ void ModelDescriptionFiller::SetField(ModelDescription& model_description, strin
 void ModelDescriptionFiller::SetChild(ModelDescription& model_description, shared_ptr<Node> child){
 	if(child->name() == "CoSimulation") FillAndSetCoSimulation(model_description, child);
 	if(child->name() == "ModelExchange") FillAndSetModelExchange(model_description, child);
+	if(child->name() == "UnitDefinitions") FillAndSetUnitDefinitions(model_description, child);
 }
 
 void ModelDescriptionFiller::FillAndSetCoSimulation(ModelDescription& model_description, shared_ptr<Node> node){
@@ -37,9 +38,22 @@ void ModelDescriptionFiller::FillAndSetCoSimulation(ModelDescription& model_desc
 	filler.Fill(co_simulation, node);
 	model_description.co_simulation(co_simulation);
 }
+
 void ModelDescriptionFiller::FillAndSetModelExchange(ModelDescription& model_description, shared_ptr<Node> node){
 	ModelExchangeFiller filler;
 	ModelExchange model_exchange;
 	filler.Fill(model_exchange, node);
 	model_description.model_exchange(model_exchange);
+}
+
+void ModelDescriptionFiller::FillAndSetUnitDefinitions(ModelDescription& model_description, shared_ptr<Node> node){
+	UnitFiller filler;
+	for(auto& child : node->childs())
+		FillAndAddUnit(model_description, child, filler);
+}
+
+void ModelDescriptionFiller::FillAndAddUnit(ModelDescription& model_description, shared_ptr<Node> child, UnitFiller& filler){
+	Unit unit;
+	filler.Fill(unit, child);
+	model_description.AddUnitDefinition(unit);
 }

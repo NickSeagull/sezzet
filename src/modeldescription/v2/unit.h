@@ -14,7 +14,7 @@ using std::shared_ptr;
 struct Unit{
 private:
 	shared_ptr<BaseUnit> base_unit_;
-	vector<shared_ptr<DisplayUnit>> display_units_;
+	vector<DisplayUnit> display_units_;
 	string name_;
 public:
 	Unit();

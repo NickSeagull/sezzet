@@ -12,6 +12,7 @@ private:
 	double offset_;
 	
 public:
+	DisplayUnit();
 	void offset(double new_offset);
 	double offset();
 	void factor(double new_factor);

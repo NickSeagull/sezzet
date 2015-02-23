@@ -3,6 +3,7 @@
 
 #include "../v2/model_description.h"
 #include "node.h"
+#include "unit_filler.h"
 
 class ModelDescriptionFiller{
 private:
@@ -10,9 +11,11 @@ private:
 	void SetChild(ModelDescription& model_description, shared_ptr<Node> child);
 	void FillAndSetCoSimulation(ModelDescription& model_description, shared_ptr<Node> node);
 	void FillAndSetModelExchange(ModelDescription& model_description, shared_ptr<Node> node);
+	void FillAndSetUnitDefinitions(ModelDescription& model_description, shared_ptr<Node> node);
+	void FillAndAddUnit(ModelDescription& model_description, shared_ptr<Node> child, UnitFiller& filler);
 public:
 	ModelDescriptionFiller();
-    void Fill(ModelDescription& model_description, Node& node); 
+	void Fill(ModelDescription& model_description, Node& node); 
 };
 
 
