@@ -17,12 +17,14 @@ private:
 	vector<shared_ptr<DisplayUnit>> display_units_;
 	string name_;
 public:
+	Unit();
 	void name(string new_name);
 	string name();
-	BaseUnit base_unit();
-	void base_unit(BaseUnit base_unit);
+	shared_ptr<BaseUnit> base_unit();
+	void base_unit(shared_ptr<BaseUnit> base_unit);
 	vector<DisplayUnit> display_units();
 	void display_units(vector<DisplayUnit> display_units);
+	void AddDisplayUnit(DisplayUnit display_unit);
 };
 
 #endif 

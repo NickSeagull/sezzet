@@ -34,7 +34,7 @@ public:
 	int m();
 	void kg(int new_kg);
 	int kg();
-
+	BaseUnit();
 };
 
 #endif
