@@ -12,12 +12,12 @@ private:
 	double offset_;
 	
 public:
-	inline void offset(double new_offset);
-	inline double offset();
-	inline void factor(double new_factor);
-	inline double factor();
-	inline void name(string new_name);
-	inline string name();
+	void offset(double new_offset);
+	double offset();
+	void factor(double new_factor);
+	double factor();
+	void name(string new_name);
+	string name();
 };
 
 #endif
