@@ -4,3 +4,4 @@ main.cc
 /resources/modelDescription.xml
 /test/test_daemon.sh
 /resources/tank_md.xml~
+/test/#run_tests.sh#
