@@ -2,6 +2,7 @@
 #include "co_simulation_filler.h"
 #include "model_exchange_filler.h"
 
+
 ModelDescriptionFiller::ModelDescriptionFiller(){}
 
 void ModelDescriptionFiller::Fill(ModelDescription& model_description, Node& node) {
@@ -30,6 +31,7 @@ void ModelDescriptionFiller::SetChild(ModelDescription& model_description, share
 	if(child->name() == "CoSimulation") FillAndSetCoSimulation(model_description, child);
 	if(child->name() == "ModelExchange") FillAndSetModelExchange(model_description, child);
 	if(child->name() == "UnitDefinitions") FillAndSetUnitDefinitions(model_description, child);
+	if(child->name() == "LogCategories") FillAndSetLogCategories(model_description, child);
 }
 
 void ModelDescriptionFiller::FillAndSetCoSimulation(ModelDescription& model_description, shared_ptr<Node> node){
@@ -56,4 +58,16 @@ void ModelDescriptionFiller::FillAndAddUnit(ModelDescription& model_description,
 	Unit unit;
 	filler.Fill(unit, child);
 	model_description.AddUnitDefinition(unit);
+}
+
+void ModelDescriptionFiller::FillAndSetLogCategories(ModelDescription& model_description, shared_ptr<Node> node){
+	CategoryFiller filler;
+	for(auto& child : node->childs())
+		FillAndAddCategory(model_description, child, filler);
+}
+
+void ModelDescriptionFiller::FillAndAddCategory(ModelDescription& model_description, shared_ptr<Node> child, CategoryFiller& filler){
+	Category category;
+	filler.Fill(category, child);
+	model_description.AddLogCategory(category);
 }

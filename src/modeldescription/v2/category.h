@@ -11,6 +11,7 @@ private:
 	string description_;
 	
 public:
+	Category();
 	void description(string new_description);
 	string description();
 	void name(string new_name);
