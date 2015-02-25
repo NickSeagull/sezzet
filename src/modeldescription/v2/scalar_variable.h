@@ -56,6 +56,9 @@ public:
 	shared_ptr<EnumerationType> enumeration();
 	void enumeration(shared_ptr<EnumerationType> enumeration);
 	vector<Tool> annotations();
+	void AddAnnotation(Tool tool);
+	shared_ptr<BooleanType> boolean();
+	void boolean(shared_ptr<BooleanType> new_boolean);
 	void annotations(vector<Tool> annotations);
 	shared_ptr<SimpleType> type();
 	void type(shared_ptr<SimpleType> type);
