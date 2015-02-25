@@ -16,7 +16,7 @@ private:
 		string value_;
 		string description_;
 	public:
-		inline string name();
+		string name();
 	};
 
 	string declared_type_;
@@ -25,7 +25,7 @@ private:
 	int max_;
 	int start_;
 	
-	vector<shared_ptr<Item>> items_;	
+	vector<Item> items_;	
 public:
 	inline void start(int new_start);
 	inline int start();
@@ -38,7 +38,7 @@ public:
 	inline void declared_type(string new_declared_type);
 	inline string declared_type();
     EnumerationType();
-	vector<shared_ptr<Item>> items();
+	vector<Item> items();
 };
 
 
