@@ -11,8 +11,8 @@ class StringType : public SimpleType{
 private:
 	string declared_type_;
 public:
-	inline void declared_type(string new_declared_type);
-	inline string declared_type();
+	void declared_type(string new_declared_type);
+	string declared_type();
     StringType();
 	template<class T>
 	bool Equals(T object);
