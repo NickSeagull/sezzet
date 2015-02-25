@@ -1,6 +1,7 @@
 #include "model_description_filler.h"
 #include "co_simulation_filler.h"
 #include "model_exchange_filler.h"
+#include "default_experiment_filler.h"
 
 
 ModelDescriptionFiller::ModelDescriptionFiller(){}
@@ -32,6 +33,7 @@ void ModelDescriptionFiller::SetChild(ModelDescription& model_description, share
 	if(child->name() == "ModelExchange") FillAndSetModelExchange(model_description, child);
 	if(child->name() == "UnitDefinitions") FillAndSetUnitDefinitions(model_description, child);
 	if(child->name() == "LogCategories") FillAndSetLogCategories(model_description, child);
+	if(child->name() == "DefaultExperiment") FillAndSetDefaultExperiment(model_description, child);
 }
 
 void ModelDescriptionFiller::FillAndSetCoSimulation(ModelDescription& model_description, shared_ptr<Node> node){
@@ -64,6 +66,13 @@ void ModelDescriptionFiller::FillAndSetLogCategories(ModelDescription& model_des
 	CategoryFiller filler;
 	for(auto& child : node->childs())
 		FillAndAddCategory(model_description, child, filler);
+}
+
+void ModelDescriptionFiller::FillAndSetDefaultExperiment(ModelDescription& model_description, shared_ptr<Node> node){
+	DefaultExperiment default_experiment;
+	DefaultExperimentFiller filler;
+	filler.Fill(default_experiment, node);
+	model_description.default_experiment(default_experiment);
 }
 
 void ModelDescriptionFiller::FillAndAddCategory(ModelDescription& model_description, shared_ptr<Node> child, CategoryFiller& filler){

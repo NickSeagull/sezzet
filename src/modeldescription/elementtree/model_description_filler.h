@@ -13,6 +13,7 @@ private:
 	void FillAndSetCoSimulation(ModelDescription& model_description, shared_ptr<Node> node);
 	void FillAndSetModelExchange(ModelDescription& model_description, shared_ptr<Node> node);
 	void FillAndSetUnitDefinitions(ModelDescription& model_description, shared_ptr<Node> node);
+	void FillAndSetDefaultExperiment(ModelDescription& model_description, shared_ptr<Node> node);
 	void FillAndAddUnit(ModelDescription& model_description, shared_ptr<Node> child, UnitFiller& filler);
 	void FillAndSetLogCategories(ModelDescription& model_description, shared_ptr<Node> child);
 	void FillAndAddCategory(ModelDescription& model_description, shared_ptr<Node> child, CategoryFiller& filler);
