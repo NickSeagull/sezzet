@@ -11,10 +11,10 @@ private:
 	string declared_type_;
 	bool start_;
 public:
-	inline void start(bool new_start);
-	inline bool start();
-	inline void declared_type(string new_declared_type);
-	inline string declared_type();
+	void start(bool new_start);
+	bool start();
+	void declared_type(string new_declared_type);
+	string declared_type();
     BooleanType();
 	template<class T>
 	bool Equals(T object);
