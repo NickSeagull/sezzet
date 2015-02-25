@@ -6,6 +6,7 @@
 #include "unit_filler.h"
 #include "category_filler.h"
 #include "tool_filler.h"
+#include "scalar_variable_filler.h"
 
 class ModelDescriptionFiller{
 private:
@@ -21,6 +22,7 @@ private:
 	void FillAndSetLogCategories(ModelDescription& model_description, shared_ptr<Node> child);
 	void FillAndAddCategory(ModelDescription& model_description, shared_ptr<Node> child, CategoryFiller& filler);
 	void FillAndAddVendorAnnotation(ModelDescription& model_description, shared_ptr<Node> child, ToolFiller& filler);
+	void FillAndAddScalarVariable(ModelDescription& model_description, shared_ptr<Node> node, ScalarVariableFiller& filler);
 public:
 	ModelDescriptionFiller();
 	void Fill(ModelDescription& model_description, Node& node); 

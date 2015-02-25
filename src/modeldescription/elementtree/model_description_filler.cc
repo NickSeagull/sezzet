@@ -3,7 +3,6 @@
 #include "model_exchange_filler.h"
 #include "default_experiment_filler.h"
 
-
 ModelDescriptionFiller::ModelDescriptionFiller(){}
 
 void ModelDescriptionFiller::Fill(ModelDescription& model_description, Node& node) {
@@ -99,4 +98,11 @@ void ModelDescriptionFiller::FillAndSetModelVariables(ModelDescription& model_de
 	ScalarVariableFiller filler;
 	for(auto& child : node->childs())
 		FillAndAddScalarVariable(model_description, child, filler);
+}
+
+void ModelDescriptionFiller::FillAndAddScalarVariable(ModelDescription& model_description, shared_ptr<Node> node, ScalarVariableFiller& filler){
+	ScalarVariable scalar_variable;
+	filler.Fill(scalar_variable, node);
+	model_description.AddModelVariable(scalar_variable);
+	model_description.AddVariableName(scalar_variable.name());
 }
