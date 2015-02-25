@@ -3,6 +3,8 @@
 
 using std::string;
 
+ScalarVariable::ScalarVariable(){}
+
 string ScalarVariable::name(){return name_;}
 void ScalarVariable::name(string new_name){name_ = new_name;}
 

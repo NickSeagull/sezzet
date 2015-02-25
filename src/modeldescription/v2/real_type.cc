@@ -22,6 +22,9 @@ int RealType::derivative(){return derivative_;}
 void RealType::derivative(int new_derivative){derivative_ = new_derivative;}
 bool RealType::reinit(){return reinit_;}
 void RealType::reinit(bool new_reinit){reinit_ = new_reinit;}
+double RealType::nominal(){return nominal_;}
+void RealType::nominal(double new_nominal){nominal_ = new_nominal;}
+
 
 
 
