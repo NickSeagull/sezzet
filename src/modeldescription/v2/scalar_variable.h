@@ -28,7 +28,7 @@ private:
 	shared_ptr<BooleanType> boolean_;
 	shared_ptr<StringType> stringg_;
 	shared_ptr<EnumerationType> enumeration_;
-	vector<shared_ptr<Tool>> annotations_;
+	vector<Tool> annotations_;
 	shared_ptr<SimpleType> type_;
 	string type_name_;
 public:
@@ -55,8 +55,8 @@ public:
 	void stringg(shared_ptr<StringType> stringg);
 	shared_ptr<EnumerationType> enumeration();
 	void enumeration(shared_ptr<EnumerationType> enumeration);
-	vector<shared_ptr<Tool>> annotations();
-	void annotations(vector<shared_ptr<Tool>> annotations);
+	vector<Tool> annotations();
+	void annotations(vector<Tool> annotations);
 	shared_ptr<SimpleType> type();
 	void type(shared_ptr<SimpleType> type);
 	std::string type_name();
