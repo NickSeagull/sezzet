@@ -13,7 +13,7 @@ class BooleanType;
 class StringType;
 class EnumerationType;
 
-struct SimpleType{
+class SimpleType{
 private:
 	string name_;
 	string description_;
