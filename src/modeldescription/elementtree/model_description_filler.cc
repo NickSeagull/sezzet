@@ -34,6 +34,8 @@ void ModelDescriptionFiller::SetChild(ModelDescription& model_description, share
 	if(child->name() == "UnitDefinitions") FillAndSetUnitDefinitions(model_description, child);
 	if(child->name() == "LogCategories") FillAndSetLogCategories(model_description, child);
 	if(child->name() == "DefaultExperiment") FillAndSetDefaultExperiment(model_description, child);
+	if(child->name() == "VendorAnnotations") FillAndSetVendorAnnotations(model_description, child);
+	if(child->name() == "ModelVariables") FillAndSetModelVariables(model_description, child); 
 }
 
 void ModelDescriptionFiller::FillAndSetCoSimulation(ModelDescription& model_description, shared_ptr<Node> node){
@@ -68,6 +70,12 @@ void ModelDescriptionFiller::FillAndSetLogCategories(ModelDescription& model_des
 		FillAndAddCategory(model_description, child, filler);
 }
 
+void ModelDescriptionFiller::FillAndAddCategory(ModelDescription& model_description, shared_ptr<Node> child, CategoryFiller& filler){
+	Category category;
+	filler.Fill(category, child);
+	model_description.AddLogCategory(category);
+}
+
 void ModelDescriptionFiller::FillAndSetDefaultExperiment(ModelDescription& model_description, shared_ptr<Node> node){
 	DefaultExperiment default_experiment;
 	DefaultExperimentFiller filler;
@@ -75,8 +83,20 @@ void ModelDescriptionFiller::FillAndSetDefaultExperiment(ModelDescription& model
 	model_description.default_experiment(default_experiment);
 }
 
-void ModelDescriptionFiller::FillAndAddCategory(ModelDescription& model_description, shared_ptr<Node> child, CategoryFiller& filler){
-	Category category;
-	filler.Fill(category, child);
-	model_description.AddLogCategory(category);
+void ModelDescriptionFiller::FillAndSetVendorAnnotations(ModelDescription& model_description, shared_ptr<Node> node){
+	ToolFiller filler;
+	for(auto& child : node->childs())
+		FillAndAddVendorAnnotation(model_description, child, filler);
+}
+
+void ModelDescriptionFiller::FillAndAddVendorAnnotation(ModelDescription& model_description, shared_ptr<Node> child, ToolFiller& filler){
+	Tool tool;
+	filler.Fill(tool, child);
+	model_description.AddVendorAnnotations(tool);
+}
+
+void ModelDescriptionFiller::FillAndSetModelVariables(ModelDescription& model_description, shared_ptr<Node> node){
+	ScalarVariableFiller filler;
+	for(auto& child : node->childs())
+		FillAndAddScalarVariable(model_description, child, filler);
 }
