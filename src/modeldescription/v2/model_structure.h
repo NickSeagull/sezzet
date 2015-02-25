@@ -18,11 +18,11 @@ private:
 public:
     ModelStructure();
 	vector<Unknown> outputs();
-	void set_outputs(vector<Unknown> outputs);
+	void outputs(vector<Unknown> new_outputs);
 	vector<Unknown> derivatives();
-	void set_derivatives(vector<Unknown> derivatives);
+	void derivatives(vector<Unknown> new_derivatives);
 	vector<Unknown> unknowns();
-	void set_unknowns(vector<Unknown> unknowns);
+	void unknowns(vector<Unknown> new_unknowns);
 };
 
 
