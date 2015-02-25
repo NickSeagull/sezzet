@@ -2,6 +2,7 @@
 #include "co_simulation_filler.h"
 #include "model_exchange_filler.h"
 #include "default_experiment_filler.h"
+#include "model_structure_filler.h"
 
 ModelDescriptionFiller::ModelDescriptionFiller(){}
 
@@ -34,7 +35,8 @@ void ModelDescriptionFiller::SetChild(ModelDescription& model_description, share
 	if(child->name() == "LogCategories") FillAndSetLogCategories(model_description, child);
 	if(child->name() == "DefaultExperiment") FillAndSetDefaultExperiment(model_description, child);
 	if(child->name() == "VendorAnnotations") FillAndSetVendorAnnotations(model_description, child);
-	if(child->name() == "ModelVariables") FillAndSetModelVariables(model_description, child); 
+	if(child->name() == "ModelVariables") FillAndSetModelVariables(model_description, child);
+	if(child->name() == "ModelStructure") FillAndSetModelStructure(model_description, child); 
 }
 
 void ModelDescriptionFiller::FillAndSetCoSimulation(ModelDescription& model_description, shared_ptr<Node> node){
@@ -105,4 +107,11 @@ void ModelDescriptionFiller::FillAndAddScalarVariable(ModelDescription& model_de
 	filler.Fill(scalar_variable, node);
 	model_description.AddModelVariable(scalar_variable);
 	model_description.AddVariableName(scalar_variable.name());
+}
+
+void ModelDescriptionFiller::FillAndSetModelStructure(ModelDescription& model_description, shared_ptr<Node> node){
+	ModelStructureFiller filler;
+	ModelStructure model_structure;
+	filler.Fill(model_structure, node);
+	model_description.model_structure(model_structure);
 }
