@@ -17,16 +17,16 @@ struct SimpleType{
 private:
 	string name_;
 	string description_;
-	inline string description();
-	inline void description(string new_description);
 	shared_ptr<RealType> real_;
 	shared_ptr<IntegerType> integer_;
 	shared_ptr<BooleanType> boolean_;
 	shared_ptr<StringType> string_;
 	shared_ptr<EnumerationType> enumeration_;
 public:
-	inline void name(string new_name);
-	inline string name();
+	void name(string new_name);
+	string name();
+	string description();
+	void description(string new_description);
 	SimpleType GetType();
 };
 
