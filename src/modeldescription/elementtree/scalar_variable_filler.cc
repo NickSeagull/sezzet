@@ -64,8 +64,8 @@ void ScalarVariableFiller::FillAndSetString(ScalarVariable& scalar_variable, sha
 
 void ScalarVariableFiller::FillAndSetAnnotations(ScalarVariable& scalar_variable, shared_ptr<Node> child){
 	ToolFiller filler;
-	for(auto& child : child->childs())
-		FillAndAddAnnotation(scalar_variable, child, filler);
+	for(auto& node : child->childs())
+		FillAndAddAnnotation(scalar_variable, node, filler);
 }
 
 void ScalarVariableFiller::FillAndAddAnnotation(ScalarVariable& scalar_variable, shared_ptr<Node> child, ToolFiller filler){
