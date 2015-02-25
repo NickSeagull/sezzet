@@ -9,8 +9,8 @@ class Tool{
 private:
 	string name_;
 public:
-	inline void name(string new_name);
-	inline string name();
+	void name(string new_name);
+	string name();
     Tool();
 };
 
