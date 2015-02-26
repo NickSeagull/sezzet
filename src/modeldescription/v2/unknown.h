@@ -13,12 +13,12 @@ private:
 	string dependencies_;
 	string dependencies_kind_;	
 public:
-	inline string dependencies_kind();
-	inline void dependencies_kind(string new_dependencies_kind);
-	inline void dependencies(string new_dependencies);
-	inline string dependencies();
-	inline void index(int new_index);
-	inline int index();
+	string dependencies_kind();
+	void dependencies_kind(string new_dependencies_kind);
+	void dependencies(string new_dependencies);
+	string dependencies();
+	void index(int new_index);
+	int index();
     Unknown();
 };
 
