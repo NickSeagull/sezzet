@@ -229,7 +229,6 @@
     <ClInclude Include="src\modeldescription\elementtree\unit_filler.h" />
     <ClInclude Include="src\modeldescription\elementtree\unknown_filler.h" />
     <ClInclude Include="src\modeldescription\model_description_deserializer.h" />
-    <ClInclude Include="src\modeldescription\ModelDescriptionElementFactory.h" />
     <ClInclude Include="src\modeldescription\v2\base_unit.h" />
     <ClInclude Include="src\modeldescription\v2\boolean_type.h" />
     <ClInclude Include="src\modeldescription\v2\capabilities.h" />

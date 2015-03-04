@@ -365,9 +365,6 @@
     <ClInclude Include="src\modeldescription\v2\unknown.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\modeldescription\ModelDescriptionElementFactory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\modeldescription\model_description_deserializer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
