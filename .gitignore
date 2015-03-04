@@ -166,3 +166,5 @@ FakesAssemblies/
 *.plg
 # Visual Studio 6 workspace options file
 *.opt
+.idea/
+CMakeLists.txt
