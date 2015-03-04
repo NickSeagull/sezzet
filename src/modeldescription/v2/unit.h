@@ -3,8 +3,8 @@
 
 #include <string>
 #include <vector>
-#include "base_unit.h"
-#include "display_unit.h"
+#include "BaseUnit.h"
+#include "DisplayUnit.h"
 #include <memory>
 
 using std::string;

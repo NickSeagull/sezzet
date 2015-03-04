@@ -1,5 +1,0 @@
-#include "source_file.h"
-
-SourceFile::SourceFile(){}
-string SourceFile::name(){return name_;}
-void SourceFile::name(string new_name){name_ = new_name;} 

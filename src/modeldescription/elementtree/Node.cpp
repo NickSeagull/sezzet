@@ -1,0 +1,28 @@
+#include "Node.h"
+
+using std::make_shared;
+
+Node::Node(){}
+unordered_map<string, string> Node::attributes(){return attributes_;}
+void Node::attributes(unordered_map<string, string> new_attributes){attributes_ = new_attributes;}
+string Node::name(){return name_;}
+void Node::name(string new_name){name_ = new_name;}
+vector<shared_ptr<Node>> Node::childs(){return childs_;}
+void Node::childs(vector<shared_ptr<Node>> new_childs){childs_ = new_childs;}
+
+
+void Node::AddAttribute(string attribute_name, string value) {
+	attributes_.insert(std::pair<string, string>(attribute_name, value));
+}
+
+string Node::GetAttribute(string attribute_name){
+	auto result = attributes_.find(attribute_name);
+	if (result != attributes_.end())
+		return result->second;
+	else
+		return "Not Found";
+}
+
+void Node::AddChild(Node child){
+	childs_.insert(childs_.end(), make_shared<Node>(child));
+}
