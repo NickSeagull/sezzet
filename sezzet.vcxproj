@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{1FDF6E41-6531-4933-A66D-7BB0940C2210}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <TargetMachine>MachineX86</TargetMachine>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <TargetMachine>MachineX86</TargetMachine>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\kernel\operatingsystem\fmu_file.cc" />
+    <ClCompile Include="src\kernel\operatingsystem\libarchive_unzipper.cc" />
+    <ClCompile Include="src\modeldescription\elementtree\base_unit_filler.cc" />
+    <ClCompile Include="src\modeldescription\elementtree\boolean_type_filler.cc" />
+    <ClCompile Include="src\modeldescription\elementtree\category_filler.cc" />
+    <ClCompile Include="src\modeldescription\elementtree\co_simulation_filler.cc" />
+    <ClCompile Include="src\modeldescription\elementtree\default_experiment_filler.cc" />
+    <ClCompile Include="src\modeldescription\elementtree\display_unit_filler.cc" />
+    <ClCompile Include="src\modeldescription\elementtree\integer_type_filler.cc" />
+    <ClCompile Include="src\modeldescription\elementtree\model_description_filler.cc" />
+    <ClCompile Include="src\modeldescription\elementtree\model_exchange_filler.cc" />
+    <ClCompile Include="src\modeldescription\elementtree\model_structure_filler.cc" />
+    <ClCompile Include="src\modeldescription\elementtree\node.cc" />
+    <ClCompile Include="src\modeldescription\elementtree\node_filler.cc" />
+    <ClCompile Include="src\modeldescription\elementtree\real_type_filler.cc" />
+    <ClCompile Include="src\modeldescription\elementtree\scalar_variable_filler.cc" />
+    <ClCompile Include="src\modeldescription\elementtree\source_file_filler.cc" />
+    <ClCompile Include="src\modeldescription\elementtree\string_type_filler.cc" />
+    <ClCompile Include="src\modeldescription\elementtree\tool_filler.cc" />
+    <ClCompile Include="src\modeldescription\elementtree\unit_filler.cc" />
+    <ClCompile Include="src\modeldescription\elementtree\unknown_filler.cc" />
+    <ClCompile Include="src\modeldescription\model_description_deserializer.cc" />
+    <ClCompile Include="src\modeldescription\v2\base_unit.cc" />
+    <ClCompile Include="src\modeldescription\v2\boolean_type.cc" />
+    <ClCompile Include="src\modeldescription\v2\capabilities.cc" />
+    <ClCompile Include="src\modeldescription\v2\category.cc" />
+    <ClCompile Include="src\modeldescription\v2\co_simulation.cc" />
+    <ClCompile Include="src\modeldescription\v2\default_experiment.cc" />
+    <ClCompile Include="src\modeldescription\v2\display_unit.cc" />
+    <ClCompile Include="src\modeldescription\v2\integer_type.cc" />
+    <ClCompile Include="src\modeldescription\v2\model_description.cc" />
+    <ClCompile Include="src\modeldescription\v2\model_exchange.cc" />
+    <ClCompile Include="src\modeldescription\v2\model_structure.cc" />
+    <ClCompile Include="src\modeldescription\v2\real_type.cc" />
+    <ClCompile Include="src\modeldescription\v2\scalar_variable.cc" />
+    <ClCompile Include="src\modeldescription\v2\source_file.cc" />
+    <ClCompile Include="src\modeldescription\v2\string_type.cc" />
+    <ClCompile Include="src\modeldescription\v2\tool.cc" />
+    <ClCompile Include="src\modeldescription\v2\unit.cc" />
+    <ClCompile Include="src\modeldescription\v2\unknown.cc" />
+    <ClCompile Include="test\modeldescription\model_description_deserializer_test.cc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\libarchive\archive.h" />
+    <ClInclude Include="include\libarchive\archive_acl_private.h" />
+    <ClInclude Include="include\libarchive\archive_cmdline_private.h" />
+    <ClInclude Include="include\libarchive\archive_crc32.h" />
+    <ClInclude Include="include\libarchive\archive_cryptor_private.h" />
+    <ClInclude Include="include\libarchive\archive_digest_private.h" />
+    <ClInclude Include="include\libarchive\archive_endian.h" />
+    <ClInclude Include="include\libarchive\archive_entry.h" />
+    <ClInclude Include="include\libarchive\archive_entry_locale.h" />
+    <ClInclude Include="include\libarchive\archive_entry_private.h" />
+    <ClInclude Include="include\libarchive\archive_hmac_private.h" />
+    <ClInclude Include="include\libarchive\archive_options_private.h" />
+    <ClInclude Include="include\libarchive\archive_pack_dev.h" />
+    <ClInclude Include="include\libarchive\archive_pathmatch.h" />
+    <ClInclude Include="include\libarchive\archive_platform.h" />
+    <ClInclude Include="include\libarchive\archive_ppmd7_private.h" />
+    <ClInclude Include="include\libarchive\archive_ppmd_private.h" />
+    <ClInclude Include="include\libarchive\archive_private.h" />
+    <ClInclude Include="include\libarchive\archive_random_private.h" />
+    <ClInclude Include="include\libarchive\archive_rb.h" />
+    <ClInclude Include="include\libarchive\archive_read_disk_private.h" />
+    <ClInclude Include="include\libarchive\archive_read_private.h" />
+    <ClInclude Include="include\libarchive\archive_string.h" />
+    <ClInclude Include="include\libarchive\archive_string_composition.h" />
+    <ClInclude Include="include\libarchive\archive_windows.h" />
+    <ClInclude Include="include\libarchive\archive_write_disk_private.h" />
+    <ClInclude Include="include\libarchive\archive_write_private.h" />
+    <ClInclude Include="include\libarchive\archive_xxhash.h" />
+    <ClInclude Include="include\libarchive\config_freebsd.h" />
+    <ClInclude Include="include\libarchive\filter_fork.h" />
+    <ClInclude Include="include\libarchive\list.h" />
+    <ClInclude Include="include\libarchive\test.h" />
+    <ClInclude Include="src\kernel\operatingsystem\fmu_file.h" />
+    <ClInclude Include="src\kernel\operatingsystem\libarchive_unzipper.h" />
+    <ClInclude Include="src\kernel\operatingsystem\unzipper.h" />
+    <ClInclude Include="src\modeldescription\elementtree\base_unit_filler.h" />
+    <ClInclude Include="src\modeldescription\elementtree\boolean_type_filler.h" />
+    <ClInclude Include="src\modeldescription\elementtree\category_filler.h" />
+    <ClInclude Include="src\modeldescription\elementtree\co_simulation_filler.h" />
+    <ClInclude Include="src\modeldescription\elementtree\default_experiment_filler.h" />
+    <ClInclude Include="src\modeldescription\elementtree\display_unit_filler.h" />
+    <ClInclude Include="src\modeldescription\elementtree\element_tree.h" />
+    <ClInclude Include="src\modeldescription\elementtree\integer_type_filler.h" />
+    <ClInclude Include="src\modeldescription\elementtree\model_description_filler.h" />
+    <ClInclude Include="src\modeldescription\elementtree\model_exchange_filler.h" />
+    <ClInclude Include="src\modeldescription\elementtree\model_structure_filler.h" />
+    <ClInclude Include="src\modeldescription\elementtree\node.h" />
+    <ClInclude Include="src\modeldescription\elementtree\node_filler.h" />
+    <ClInclude Include="src\modeldescription\elementtree\real_type_filler.h" />
+    <ClInclude Include="src\modeldescription\elementtree\scalar_variable_filler.h" />
+    <ClInclude Include="src\modeldescription\elementtree\source_file_filler.h" />
+    <ClInclude Include="src\modeldescription\elementtree\string_type_filler.h" />
+    <ClInclude Include="src\modeldescription\elementtree\tool_filler.h" />
+    <ClInclude Include="src\modeldescription\elementtree\unit_filler.h" />
+    <ClInclude Include="src\modeldescription\elementtree\unknown_filler.h" />
+    <ClInclude Include="src\modeldescription\model_description_deserializer.h" />
+    <ClInclude Include="src\modeldescription\model_description_element_factory.h" />
+    <ClInclude Include="src\modeldescription\v2\base_unit.h" />
+    <ClInclude Include="src\modeldescription\v2\boolean_type.h" />
+    <ClInclude Include="src\modeldescription\v2\capabilities.h" />
+    <ClInclude Include="src\modeldescription\v2\category.h" />
+    <ClInclude Include="src\modeldescription\v2\co_simulation.h" />
+    <ClInclude Include="src\modeldescription\v2\default_experiment.h" />
+    <ClInclude Include="src\modeldescription\v2\display_unit.h" />
+    <ClInclude Include="src\modeldescription\v2\enumeration_type.h" />
+    <ClInclude Include="src\modeldescription\v2\integer_type.h" />
+    <ClInclude Include="src\modeldescription\v2\model_description.h" />
+    <ClInclude Include="src\modeldescription\v2\model_exchange.h" />
+    <ClInclude Include="src\modeldescription\v2\model_structure.h" />
+    <ClInclude Include="src\modeldescription\v2\real_type.h" />
+    <ClInclude Include="src\modeldescription\v2\scalar_variable.h" />
+    <ClInclude Include="src\modeldescription\v2\simple_type.h" />
+    <ClInclude Include="src\modeldescription\v2\source_file.h" />
+    <ClInclude Include="src\modeldescription\v2\string_type.h" />
+    <ClInclude Include="src\modeldescription\v2\tool.h" />
+    <ClInclude Include="src\modeldescription\v2\unit.h" />
+    <ClInclude Include="src\modeldescription\v2\unknown.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
