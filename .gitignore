@@ -68,8 +68,8 @@ _Chutzpah*
 ipch/
 *.aps
 *.ncb
-#*.opensdf
-#*.sdf
+*.opensdf
+*.sdf
 *.cachefile
 # Visual Studio profiler
 *.psess
