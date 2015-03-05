@@ -1,7 +1,7 @@
 #ifndef MODELDESCRIPTION_ELEMENTTREE_COSIMULATIONFILLER_H_
 #define MODELDESCRIPTION_ELEMENTTREE_COSIMULATIONFILLER_H_
 
-#include "CoSimulation.h"
+#include "../v2/CoSimulation.h"
 #include "Node.h"
 #include <memory>
 
@@ -15,7 +15,7 @@ private:
 	void SetCapabilities(CoSimulation& co_simulation);
 public:
 	CoSimulationFiller();
-    void Fill(CoSimulation& co_simulation, shared_ptr<Node> node);
+	void Fill(CoSimulation& co_simulation, shared_ptr<Node> node);
 };
 
 

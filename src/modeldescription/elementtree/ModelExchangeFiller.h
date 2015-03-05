@@ -1,7 +1,7 @@
 #ifndef MODELDESCRIPTION_ELEMENTTREE_MODELEXCHANGEFILLER_H_
 #define MODELDESCRIPTION_ELEMENTTREE_MODELEXCHANGEFILLER_H_
 
-#include "ModelExchange.h"
+#include "../v2/ModelExchange.h"
 #include "Node.h"
 #include <memory>
 

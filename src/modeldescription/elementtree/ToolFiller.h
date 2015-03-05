@@ -1,7 +1,7 @@
 #ifndef MODELDESCRIPTION_ELEMENTTREE_TOOLFILLER_H_
 #define MODELDESCRIPTION_ELEMENTTREE_TOOLFILLER_H_
 
-#include "Tool.h"
+#include "../v2/Tool.h"
 #include "Node.h"
 #include <memory>
 

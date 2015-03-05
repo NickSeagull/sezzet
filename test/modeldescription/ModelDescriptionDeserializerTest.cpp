@@ -1,7 +1,6 @@
 #define BOOST_TEST_DYN_LINK
-#include "ElementTree.h"
-#include "NodeFiller.h"
-#include "ModelDescription.h"
+#include "../../src/modeldescription/elementtree/NodeFiller.h"
+#include "../../src/modeldescription/v2/ModelDescription.h"
 #include "../../src/modeldescription/ModelDescriptionDeserializer.h"
 
 #define BOOST_TEST_MODULE ModelDescriptionDeserializerTest
@@ -14,6 +13,7 @@
 #include <memory>
 #include <string>
 #include <vector>
+#include "../../src/modeldescription/elementtree/node.h"
 
 using std::unique_ptr;
 using std::make_unique;
@@ -21,8 +21,8 @@ using boost::property_tree::ptree;
 using std::make_shared;
 using std::vector;
 
-std::string bouncing_ball_xml_path("/home/nick/Desarrollo/SIANI/sezzet/resources/bouncing_ball_md.xml");
-std::string tank_xml_path("/home/nick/Desarrollo/SIANI/sezzet/resources/tank_md.xml");
+std::string bouncing_ball_xml_path("resources/bouncing_ball_md.xml");
+std::string tank_xml_path("resources/tank_md.xml");
 boost::test_tools::output_test_stream output;
 
 ptree MakeEmptyTree(){
@@ -36,7 +36,7 @@ BOOST_AUTO_TEST_CASE( it_is_possible_to_initialize_deserializer ){
 }
 
 BOOST_AUTO_TEST_CASE( it_is_possible_to_create_a_tree_that_represents_the_model_description ){
-	unique_ptr<ElementTree> tree();
+	unique_ptr<Node> tree();
 	BOOST_CHECK(tree != NULL);
 }
 
@@ -46,42 +46,42 @@ BOOST_AUTO_TEST_CASE( it_is_possible_to_create_a_node_for_mantaining_the_xml_ele
 }
 
 BOOST_AUTO_TEST_CASE( a_node_will_be_filled_with_attributes_after_being_passed_to_a_node_filler ){
-	Node node;
+	shared_ptr<Node> node;
 	NodeFiller filler;
 	ptree property_tree;
 	read_xml(bouncing_ball_xml_path, property_tree);
 	string node_name = "fmiModelDescription";
 	ptree xml_subtree = property_tree.get_child(node_name, MakeEmptyTree());
 	filler.Fill(node, node_name, xml_subtree);
-	BOOST_CHECK_EQUAL(node.GetAttribute("fmiVersion"), "1.0");
-	BOOST_CHECK_EQUAL(node.GetAttribute("modelName"), "bouncingBall");
-	BOOST_CHECK_EQUAL(node.GetAttribute("modelIdentifier"), "bouncingBall");
-	BOOST_CHECK_EQUAL(node.GetAttribute("guid"), "{8c4e810f-3df3-4a00-8276-176fa3c9f003}");
-	BOOST_CHECK_EQUAL(node.GetAttribute("numberOfContinuousStates"), "2");
-	BOOST_CHECK_EQUAL(node.GetAttribute("numberOfEventIndicators"), "1");
+	BOOST_CHECK_EQUAL(node->GetAttribute("fmiVersion"), "1.0");
+	BOOST_CHECK_EQUAL(node->GetAttribute("modelName"), "bouncingBall");
+	BOOST_CHECK_EQUAL(node->GetAttribute("modelIdentifier"), "bouncingBall");
+	BOOST_CHECK_EQUAL(node->GetAttribute("guid"), "{8c4e810f-3df3-4a00-8276-176fa3c9f003}");
+	BOOST_CHECK_EQUAL(node->GetAttribute("numberOfContinuousStates"), "2");
+	BOOST_CHECK_EQUAL(node->GetAttribute("numberOfEventIndicators"), "1");
 }
 
 BOOST_AUTO_TEST_CASE( a_node_will_know_its_name_after_being_passed_to_a_node_filler ){
-	Node node;
+	shared_ptr<Node> node;
 	NodeFiller filler;
 	ptree property_tree;
 	read_xml(bouncing_ball_xml_path, property_tree);
 	string node_name = "fmiModelDescription";
 	ptree xml_subtree = property_tree.get_child(node_name, MakeEmptyTree());
 	filler.Fill(node, node_name, xml_subtree);
-	BOOST_CHECK_EQUAL(node.name(), "fmiModelDescription");
+	BOOST_CHECK_EQUAL(node->name(), "fmiModelDescription");
 }
 
 BOOST_AUTO_TEST_CASE( a_node_will_have_other_nodes_as_childs_if_the_xml_has_that_structure ){
-	Node node;
+	shared_ptr<Node> node;
 	NodeFiller filler;
 	ptree property_tree;
 	read_xml(bouncing_ball_xml_path, property_tree);
 	string node_name = "fmiModelDescription";
 	ptree xml_subtree = property_tree.get_child(node_name, MakeEmptyTree());
 	filler.Fill(node, node_name, xml_subtree);
-	BOOST_CHECK_EQUAL(node.childs().at(0)->name(), "ModelVariables");
-	BOOST_CHECK_EQUAL(node.childs().at(0)->childs().at(0)->name(), "ScalarVariable");
+	BOOST_CHECK_EQUAL(node->childs().at(0)->name(), "ModelVariables");
+	BOOST_CHECK_EQUAL(node->childs().at(0)->childs().at(0)->name(), "ScalarVariable");
 }
 
 BOOST_AUTO_TEST_CASE( deserializer_test ){

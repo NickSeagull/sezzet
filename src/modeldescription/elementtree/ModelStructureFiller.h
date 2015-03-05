@@ -1,7 +1,7 @@
 #ifndef MODELDESCRIPTION_ELEMENTTREE_MODELSTRUCTUREFILLER_H_
 #define MODELDESCRIPTION_ELEMENTTREE_MODELSTRUCTUREFILLER_H_
 
-#include "ModelStructure.h"
+#include "../v2/ModelStructure.h"
 #include "Node.h"
 #include "UnknownFiller.h"
 

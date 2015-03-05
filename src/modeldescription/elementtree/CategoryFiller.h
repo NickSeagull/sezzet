@@ -1,7 +1,7 @@
 #ifndef MODELDESCRIPTION_ELEMENTTREE_CATEGORYFILLER_H_
 #define MODELDESCRIPTION_ELEMENTTREE_CATEGORYFILLER_H_
 
-#include "Category.h"
+#include "../v2/Category.h"
 #include "Node.h"
 #include <memory>
 

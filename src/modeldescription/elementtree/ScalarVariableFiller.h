@@ -1,7 +1,7 @@
 #ifndef MODELDESCRIPTION_ELEMENTTREE_SCALARVARIABLEFILLER_H_
 #define MODELDESCRIPTION_ELEMENTTREE_SCALARVARIABLEFILLER_H_
 
-#include "ScalarVariable.h"
+#include "../v2/ScalarVariable.h"
 #include "Node.h"
 #include "ToolFiller.h"
 
