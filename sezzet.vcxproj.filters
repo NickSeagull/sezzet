@@ -509,9 +509,6 @@
     <ClInclude Include="src\modeldescription\elementtree\DisplayUnitFiller.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\modeldescription\elementtree\ElementTree.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\modeldescription\elementtree\IntegerTypeFiller.h">
       <Filter>Header Files</Filter>
     </ClInclude>
