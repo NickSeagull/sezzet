@@ -2,7 +2,7 @@
 #define MODELDESCRIPTION_MODELDESCRIPTIONDESERIALIZER_H_
 
 #include <string>
-#include "v2/model_description.h"
+#include "v2/ModelDescription.h"
 
 using std::string;
 
