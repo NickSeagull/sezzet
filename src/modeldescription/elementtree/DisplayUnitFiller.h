@@ -1,7 +1,7 @@
 #ifndef MODELDESCRIPTION_ELEMENTTREE_DISPLAYUNITFILLER_H_
 #define MODELDESCRIPTION_ELEMENTTREE_DISPLAYUNITFILLER_H_
 
-#include "DisplayUnit.h"
+#include "../v2/DisplayUnit.h"
 #include "Node.h"
 #include <memory>
 

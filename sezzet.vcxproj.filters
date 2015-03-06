@@ -15,130 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\kernel\operatingsystem\fmu_file.cc">
+    <ClCompile Include="src\kernel\operatingsystem\FmuFile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\kernel\operatingsystem\libarchive_unzipper.cc">
+    <ClCompile Include="src\kernel\operatingsystem\LibarchiveUnzipper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\modeldescription\model_description_deserializer.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\elementtree\base_unit_filler.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\elementtree\boolean_type_filler.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\elementtree\category_filler.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\elementtree\co_simulation_filler.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\elementtree\default_experiment_filler.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\elementtree\display_unit_filler.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\elementtree\integer_type_filler.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\elementtree\model_description_filler.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\elementtree\model_exchange_filler.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\elementtree\model_structure_filler.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\elementtree\node.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\elementtree\node_filler.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\elementtree\real_type_filler.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\elementtree\scalar_variable_filler.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\elementtree\source_file_filler.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\elementtree\string_type_filler.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\elementtree\tool_filler.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\elementtree\unit_filler.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\elementtree\unknown_filler.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\v2\base_unit.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\v2\boolean_type.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\v2\capabilities.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\v2\category.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\v2\co_simulation.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\v2\default_experiment.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\v2\display_unit.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\v2\integer_type.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\v2\model_description.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\v2\model_exchange.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\v2\model_structure.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\v2\real_type.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\v2\scalar_variable.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\v2\source_file.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\v2\string_type.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\v2\tool.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\v2\unit.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\v2\unknown.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="test\modeldescription\model_description_deserializer_test.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\elementtree\Node.cpp">
+    <ClCompile Include="src\modeldescription\ModelDescriptionDeserializer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\modeldescription\elementtree\BaseUnitFiller.cpp">
@@ -169,6 +52,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\modeldescription\elementtree\ModelStructureFiller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\modeldescription\elementtree\Node.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\modeldescription\elementtree\NodeFiller.cpp">
@@ -249,16 +135,7 @@
     <ClCompile Include="src\modeldescription\v2\Unknown.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\modeldescription\ModelDescriptionDeserializer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="test\modeldescription\ModelDescriptionDeserializerTest.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\kernel\operatingsystem\FmuFile.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\kernel\operatingsystem\LibarchiveUnzipper.cpp">
+    <ClCompile Include="test\modeldescription\ModelDescriptionDeserializerTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -359,136 +236,16 @@
     <ClInclude Include="include\libarchive\test.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\kernel\operatingsystem\fmu_file.h">
+    <ClInclude Include="src\kernel\operatingsystem\BaseUnzipper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\kernel\operatingsystem\libarchive_unzipper.h">
+    <ClInclude Include="src\kernel\operatingsystem\FmuFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\kernel\operatingsystem\unzipper.h">
+    <ClInclude Include="src\kernel\operatingsystem\LibarchiveUnzipper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\modeldescription\elementtree\base_unit_filler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\elementtree\boolean_type_filler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\elementtree\category_filler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\elementtree\co_simulation_filler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\elementtree\default_experiment_filler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\elementtree\display_unit_filler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\elementtree\element_tree.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\elementtree\integer_type_filler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\elementtree\model_description_filler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\elementtree\model_exchange_filler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\elementtree\model_structure_filler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\elementtree\node.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\elementtree\node_filler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\elementtree\real_type_filler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\elementtree\scalar_variable_filler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\elementtree\source_file_filler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\elementtree\string_type_filler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\elementtree\tool_filler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\elementtree\unit_filler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\elementtree\unknown_filler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\v2\base_unit.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\v2\boolean_type.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\v2\capabilities.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\v2\category.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\v2\co_simulation.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\v2\default_experiment.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\v2\display_unit.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\v2\enumeration_type.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\v2\integer_type.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\v2\model_description.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\v2\model_exchange.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\v2\model_structure.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\v2\real_type.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\v2\scalar_variable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\v2\simple_type.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\v2\source_file.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\v2\string_type.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\v2\tool.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\v2\unit.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\v2\unknown.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\model_description_deserializer.h">
+    <ClInclude Include="src\modeldescription\ModelDescriptionDeserializer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\modeldescription\elementtree\BaseUnitFiller.h">
@@ -521,6 +278,9 @@
     <ClInclude Include="src\modeldescription\elementtree\ModelStructureFiller.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\modeldescription\elementtree\Node.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="src\modeldescription\elementtree\NodeFiller.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -549,6 +309,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\modeldescription\v2\BooleanType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\modeldescription\v2\Capabilities.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\modeldescription\v2\Category.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\modeldescription\v2\CoSimulation.h">
@@ -590,28 +356,21 @@
     <ClInclude Include="src\modeldescription\v2\StringType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\modeldescription\ModelDescriptionDeserializer.h">
+    <ClInclude Include="src\modeldescription\v2\Tool.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\kernel\operatingsystem\BaseUnzipper.h">
+    <ClInclude Include="src\modeldescription\v2\Unit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\kernel\operatingsystem\FmuFile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\kernel\operatingsystem\LibarchiveUnzipper.h">
+    <ClInclude Include="src\modeldescription\v2\Unknown.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\Makefile" />
+    <None Include=".gitignore" />
     <None Include="README.org" />
-    <None Include="test\run_tests.sh" />
-    <None Include="test\modeldescription\.gitignore" />
-    <None Include="test\modeldescription\Makefile" />
     <None Include="resources\win_32_bouncingBall.fmu" />
     <None Include="lib\libarchive.a" />
-    <None Include=".gitignore" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="resources\bouncing_ball_md.xml" />

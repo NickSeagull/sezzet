@@ -1,7 +1,7 @@
 #ifndef MODELDESCRIPTION_ELEMENTTREE_SOURCEFILEFILLER_H_
 #define MODELDESCRIPTION_ELEMENTTREE_SOURCEFILEFILLER_H_
 
-#include "SourceFile.h"
+#include "../v2/SourceFile.h"
 #include "Node.h"
 #include <memory>
 

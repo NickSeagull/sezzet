@@ -25,7 +25,7 @@ public:
 	unordered_map<string, string> attributes();
 	void AddAttribute(string attribute_name, string value);
 	string GetAttribute(string attribute_name);
-	void AddChild(Node child);
+	void AddChild(shared_ptr<Node> child);
 	Node();
 };
 

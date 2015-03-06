@@ -23,6 +23,6 @@ string Node::GetAttribute(string attribute_name){
 		return "Not Found";
 }
 
-void Node::AddChild(Node child){
-	childs_.insert(childs_.end(), make_shared<Node>(child));
+void Node::AddChild(shared_ptr<Node> child){
+	childs_.insert(childs_.end(), child);
 }

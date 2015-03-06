@@ -1,7 +1,7 @@
 #ifndef MODELDESCRIPTION_ELEMENTTREE_INTEGERTYPEFILLER_H_
 #define MODELDESCRIPTION_ELEMENTTREE_INTEGERTYPEFILLER_H_
 
-#include "IntegerType.h"
+#include "../v2/IntegerType.h"
 #include "Node.h"
 
 class IntegerTypeFiller{

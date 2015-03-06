@@ -1,7 +1,7 @@
 #ifndef MODELDESCRIPTION_ELEMENTTREE_STRINGTYPEFILLER_H_
 #define MODELDESCRIPTION_ELEMENTTREE_STRINGTYPEFILLER_H_
 
-#include "StringType.h"
+#include "../v2/StringType.h"
 #include "Node.h"
 
 class StringTypeFiller{

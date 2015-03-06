@@ -1,7 +1,7 @@
 #ifndef MODELDESCRIPTION_ELEMENTTREE_BOOLEANTYPEFILLER_H_
 #define MODELDESCRIPTION_ELEMENTTREE_BOOLEANTYPEFILLER_H_
 
-#include "BooleanType.h"
+#include "../v2/BooleanType.h"
 #include "Node.h"
 
 class BooleanTypeFiller{

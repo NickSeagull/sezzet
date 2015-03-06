@@ -4,6 +4,7 @@
 #include "elementtree/node.h"
 #include "elementtree/NodeFiller.h"
 #include "elementtree/ModelDescriptionFiller.h"
+#include <iostream>
 
 using boost::property_tree::ptree;
 
@@ -12,22 +13,22 @@ ptree EmptyPTree(){
 	return tree;
 }
 
-
-unordered_map<string, std::function<void(const ModelDescriptionDeserializer&)>> ModelDescriptionDeserializer::model_description_class_factory = {
-	{ "fmiModelDescription",  &ModelDescriptionDeserializer::FillModelDescription}
-};
-
 ModelDescriptionDeserializer::ModelDescriptionDeserializer(string xml_path) {
 	xml_path_ = xml_path;
+	InitializeFactoryMap();
+
 }
 
-void ModelDescriptionDeserializer::Deserialize(ModelDescription& model_description){
+void ModelDescriptionDeserializer::InitializeFactoryMap() {
+	model_description_class_factory_["fmiModelDescription"] = std::bind(&ModelDescriptionDeserializer::FillModelDescription, this);
+}
+
+void ModelDescriptionDeserializer::Deserialize(ModelDescription& model_description) {
 	ptree property_tree;
 	read_xml(xml_path_, property_tree);
 	FillModelDescriptionRawTree(property_tree);
 	
 }
-
 
 void ModelDescriptionDeserializer::FillModelDescriptionRawTree(ptree &property_tree) {
 	raw_tree_ = property_tree.get_child("fmiModelDescription", EmptyPTree());
@@ -40,5 +41,5 @@ void ModelDescriptionDeserializer::FillElementTreeRoot(){
 }
 
 void ModelDescriptionDeserializer::FillModelDescription(){
-
+	std::cout << xml_path_ << std::endl;
 }
