@@ -21,6 +21,7 @@ private:
 	unordered_map<string, std::function<void()>> model_description_class_factory_;
 public:
 	ModelDescriptionDeserializer(string xml_path);
+	~ModelDescriptionDeserializer();
 
 	void InitializeFactoryMap();
 

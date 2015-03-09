@@ -30,21 +30,6 @@ ptree MakeEmptyTree(){
 	return tree;
 }
 
-BOOST_AUTO_TEST_CASE( it_is_possible_to_initialize_deserializer ){
-	unique_ptr<ModelDescriptionDeserializer> deserializer();
-	BOOST_CHECK(deserializer != NULL); 
-}
-
-BOOST_AUTO_TEST_CASE( it_is_possible_to_create_a_tree_that_represents_the_model_description ){
-	unique_ptr<Node> tree();
-	BOOST_CHECK(tree != NULL);
-}
-
-BOOST_AUTO_TEST_CASE( it_is_possible_to_create_a_node_for_mantaining_the_xml_elements_data ){
-	unique_ptr<Node> node();
-	BOOST_CHECK(node != NULL);
-}
-
 BOOST_AUTO_TEST_CASE( a_node_will_be_filled_with_attributes_after_being_passed_to_a_node_filler ){
 	shared_ptr<Node> node;
 	NodeFiller filler;

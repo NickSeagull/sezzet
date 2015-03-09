@@ -19,6 +19,9 @@ ModelDescriptionDeserializer::ModelDescriptionDeserializer(string xml_path) {
 
 }
 
+
+ModelDescriptionDeserializer::~ModelDescriptionDeserializer() {}
+
 void ModelDescriptionDeserializer::InitializeFactoryMap() {
 	model_description_class_factory_["fmiModelDescription"] = std::bind(&ModelDescriptionDeserializer::FillModelDescription, this);
 }
