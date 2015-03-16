@@ -100,7 +100,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>libarchive.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
     </Link>
@@ -135,8 +135,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\kernel\operatingsystem\FmuFile.cpp" />
-    <ClCompile Include="src\kernel\operatingsystem\LibarchiveUnzipper.cpp" />
+    <ClCompile Include="src\kernel\operatingsystem\SevenZipUnzipper.cpp" />
     <ClCompile Include="src\modeldescription\elementtree\BaseUnitFiller.cpp" />
     <ClCompile Include="src\modeldescription\elementtree\BooleanTypeFiller.cpp" />
     <ClCompile Include="src\modeldescription\elementtree\CategoryFiller.cpp" />
@@ -175,7 +174,7 @@
     <ClCompile Include="src\modeldescription\v2\Tool.cpp" />
     <ClCompile Include="src\modeldescription\v2\Unit.cpp" />
     <ClCompile Include="src\modeldescription\v2\Unknown.cpp" />
-    <ClCompile Include="test\modeldescription\ModelDescriptionDeserializerTest.cpp" />
+    <ClCompile Include="test\kernel\operatingsystem\SevenZipUnzipperTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\libarchive\archive.h" />
@@ -210,9 +209,7 @@
     <ClInclude Include="include\libarchive\filter_fork.h" />
     <ClInclude Include="include\libarchive\list.h" />
     <ClInclude Include="include\libarchive\test.h" />
-    <ClInclude Include="src\kernel\operatingsystem\BaseUnzipper.h" />
-    <ClInclude Include="src\kernel\operatingsystem\FmuFile.h" />
-    <ClInclude Include="src\kernel\operatingsystem\LibarchiveUnzipper.h" />
+    <ClInclude Include="src\kernel\operatingsystem\SevenZipUnzipper.h" />
     <ClInclude Include="src\modeldescription\elementtree\BaseUnitFiller.h" />
     <ClInclude Include="src\modeldescription\elementtree\BooleanTypeFiller.h" />
     <ClInclude Include="src\modeldescription\elementtree\CategoryFiller.h" />

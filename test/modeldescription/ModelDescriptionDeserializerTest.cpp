@@ -3,7 +3,6 @@
 #include "../../src/modeldescription/v2/ModelDescription.h"
 #include "../../src/modeldescription/ModelDescriptionDeserializer.h"
 
-#define BOOST_TEST_MODULE ModelDescriptionDeserializerTest
 
 #include <boost/test/unit_test.hpp>
 #include <boost/property_tree/ptree.hpp>

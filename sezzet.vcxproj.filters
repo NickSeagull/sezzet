@@ -15,12 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\kernel\operatingsystem\FmuFile.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\kernel\operatingsystem\LibarchiveUnzipper.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\modeldescription\ModelDescriptionDeserializer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -135,7 +129,10 @@
     <ClCompile Include="src\modeldescription\v2\Unknown.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="test\modeldescription\ModelDescriptionDeserializerTest.cpp">
+    <ClCompile Include="src\kernel\operatingsystem\SevenZipUnzipper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="test\kernel\operatingsystem\SevenZipUnzipperTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -234,15 +231,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\libarchive\test.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\kernel\operatingsystem\BaseUnzipper.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\kernel\operatingsystem\FmuFile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\kernel\operatingsystem\LibarchiveUnzipper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\modeldescription\ModelDescriptionDeserializer.h">
@@ -363,6 +351,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\modeldescription\v2\Unknown.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\kernel\operatingsystem\SevenZipUnzipper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

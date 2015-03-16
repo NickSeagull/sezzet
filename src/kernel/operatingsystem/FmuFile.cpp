@@ -1,5 +1,4 @@
 #include "FmuFile.h"
-#include "LibarchiveUnzipper.h"
 #include <memory>
 #include <chrono>
 #include <boost/filesystem.hpp>

@@ -1,7 +1,6 @@
 #ifndef KERNEL_OPERATINGSYSTEM_FMUFILE_H_
 #define KERNEL_OPERATINGSYSTEM_FMUFILE_H_
 
-#include "BaseUnzipper.h"
 #include <memory>
 #include <stdexcept>
 
