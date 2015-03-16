@@ -32,6 +32,7 @@ void InitalizeProcessStructs(STARTUPINFO &startup_info, PROCESS_INFORMATION &pro
 }
 
 void SevenZipUnzipper::ExtractTo(string output_path) {
+#ifdef _WIN32
 	STARTUPINFO startup_info;
 	PROCESS_INFORMATION process_info;
 	string command = "7z x " + file_path_ + " -o\"" + output_path + "\" -y";
@@ -40,4 +41,7 @@ void SevenZipUnzipper::ExtractTo(string output_path) {
 	WaitForSingleObject(process_info.hProcess, INFINITE);
 	CloseHandle(process_info.hProcess);
 	CloseHandle(process_info.hThread);
+#else
+	throw exception("Operating system not supported!");
+#endif
 }
