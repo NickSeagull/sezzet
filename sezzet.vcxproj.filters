@@ -135,6 +135,9 @@
     <ClCompile Include="test\kernel\operatingsystem\SevenZipUnzipperTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\kernel\operatingsystem\FmuFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\libarchive\archive.h">
@@ -354,6 +357,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\kernel\operatingsystem\SevenZipUnzipper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\kernel\operatingsystem\FmuFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

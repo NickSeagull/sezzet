@@ -135,6 +135,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\kernel\operatingsystem\FmuFile.cpp" />
     <ClCompile Include="src\kernel\operatingsystem\SevenZipUnzipper.cpp" />
     <ClCompile Include="src\modeldescription\elementtree\BaseUnitFiller.cpp" />
     <ClCompile Include="src\modeldescription\elementtree\BooleanTypeFiller.cpp" />
@@ -209,6 +210,7 @@
     <ClInclude Include="include\libarchive\filter_fork.h" />
     <ClInclude Include="include\libarchive\list.h" />
     <ClInclude Include="include\libarchive\test.h" />
+    <ClInclude Include="src\kernel\operatingsystem\FmuFile.h" />
     <ClInclude Include="src\kernel\operatingsystem\SevenZipUnzipper.h" />
     <ClInclude Include="src\modeldescription\elementtree\BaseUnitFiller.h" />
     <ClInclude Include="src\modeldescription\elementtree\BooleanTypeFiller.h" />
