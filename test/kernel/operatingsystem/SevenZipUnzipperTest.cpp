@@ -1,5 +1,5 @@
 #define BOOST_TEST_DYN_LINK
-#define BOOST_TEST_MODULE SevenZipUnzipperTest
+#define BOOST_TEST_MODULE SezzetTests
 #include <boost/test/unit_test.hpp>
 #include <boost/crc.hpp>
 #include <string>
