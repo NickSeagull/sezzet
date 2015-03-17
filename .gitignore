@@ -168,3 +168,4 @@ FakesAssemblies/
 *.opt
 .idea/
 CMakeLists.txt
+*.cd
