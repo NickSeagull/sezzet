@@ -17,7 +17,7 @@ private:
 	void MakeAndAddChild(shared_ptr<Node> node, ptree::value_type& xml_element);
 public:
 	NodeFiller();
-	void Fill(shared_ptr<Node> node, string node_name, ptree& xml_tree);
+	void Fill(shared_ptr<Node> &node, string node_name, ptree& xml_tree);
 };
 
 

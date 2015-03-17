@@ -8,8 +8,8 @@ using std::make_shared;
 
 void NodeFiller::Fill(shared_ptr<Node> node, string node_name, ptree& xml_tree){
 	node->name(node_name);
-	FillWithAttributes(node, xml_tree);
-	FillWithChilds(node, xml_tree);
+	//FillWithAttributes(node, xml_tree);
+	//FillWithChilds(node, xml_tree);
 }
 
 void NodeFiller::FillWithAttributes(shared_ptr<Node> node, ptree& xml_tree){

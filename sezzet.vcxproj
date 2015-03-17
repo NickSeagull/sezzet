@@ -256,6 +256,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
+    <None Include="ClassDiagram.cd" />
     <None Include="lib\libarchive-2.dll" />
     <None Include="lib\libarchive2.dll" />
     <None Include="README.org" />

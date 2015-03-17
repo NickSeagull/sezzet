@@ -372,6 +372,7 @@
     <None Include="resources\win_32_bouncingBall.fmu" />
     <None Include="lib\libarchive-2.dll" />
     <None Include="lib\libarchive2.dll" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="resources\bouncing_ball_md.xml" />

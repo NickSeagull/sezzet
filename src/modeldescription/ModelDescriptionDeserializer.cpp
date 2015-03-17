@@ -16,11 +16,11 @@ ptree EmptyPTree(){
 ModelDescriptionDeserializer::ModelDescriptionDeserializer(string xml_path) {
 	xml_path_ = xml_path;
 	InitializeFactoryMap();
-
 }
 
 
-ModelDescriptionDeserializer::~ModelDescriptionDeserializer() {}
+ModelDescriptionDeserializer::~ModelDescriptionDeserializer() {
+}
 
 void ModelDescriptionDeserializer::InitializeFactoryMap() {
 	model_description_class_factory_["fmiModelDescription"] = std::bind(&ModelDescriptionDeserializer::FillModelDescription, this);
