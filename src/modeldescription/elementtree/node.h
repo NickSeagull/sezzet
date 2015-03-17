@@ -27,6 +27,7 @@ public:
 	string GetAttribute(string attribute_name);
 	void AddChild(shared_ptr<Node> child);
 	Node();
+	~Node();
 };
 
 

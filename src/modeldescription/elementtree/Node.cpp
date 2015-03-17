@@ -3,7 +3,13 @@
 using std::make_shared;
 
 Node::Node(){}
-unordered_map<string, string> Node::attributes(){return attributes_;}
+
+Node::~Node() {
+	childs_.clear();
+	attributes_.clear();
+}
+
+unordered_map<string, string> Node::attributes() { return attributes_; }
 void Node::attributes(unordered_map<string, string> new_attributes){attributes_ = new_attributes;}
 string Node::name(){return name_;}
 void Node::name(string new_name){name_ = new_name;}
