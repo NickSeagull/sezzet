@@ -22,6 +22,8 @@ ModelDescriptionDeserializer::ModelDescriptionDeserializer(string xml_path) {
 
 
 ModelDescriptionDeserializer::~ModelDescriptionDeserializer() {
+	element_tree_root_.reset();
+	raw_tree_.reset();
 }
 
 void ModelDescriptionDeserializer::InitializeFactoryMap() {
