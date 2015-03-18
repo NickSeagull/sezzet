@@ -5,8 +5,10 @@
 #include "elementtree/NodeFiller.h"
 #include "elementtree/ModelDescriptionFiller.h"
 #include <iostream>
+#include <memory>
 
 using boost::property_tree::ptree;
+using std::make_shared;
 
 ptree EmptyPTree(){
 	ptree tree;
@@ -30,11 +32,10 @@ void ModelDescriptionDeserializer::Deserialize(ModelDescription& model_descripti
 	ptree property_tree;
 	read_xml(xml_path_, property_tree);
 	FillModelDescriptionRawTree(property_tree);
-	
 }
 
 void ModelDescriptionDeserializer::FillModelDescriptionRawTree(ptree &property_tree) {
-	raw_tree_ = property_tree.get_child("fmiModelDescription", EmptyPTree());
+	raw_tree_ = make_shared<ptree>(property_tree.get_child("fmiModelDescription", EmptyPTree()));
 	FillElementTreeRoot();
 }
 

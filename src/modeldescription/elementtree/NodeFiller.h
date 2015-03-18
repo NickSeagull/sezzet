@@ -11,13 +11,13 @@ using boost::property_tree::ptree;
 class NodeFiller{
 private:
 	ptree MakeEmptyTree();
-	ptree GetAttributeTree(ptree& xml_tree);
-	void FillWithAttributes(shared_ptr<Node> node, ptree& xml_tree);
-	void FillWithChilds(shared_ptr<Node> node, ptree& xml_tree);
-	void MakeAndAddChild(shared_ptr<Node> node, ptree::value_type& xml_element);
+	ptree GetAttributeTree(const shared_ptr<ptree>& xml_tree);
+	void FillWithAttributes(const shared_ptr<Node>& node, const shared_ptr<ptree>& xml_tree);
+	void FillWithChilds(const shared_ptr<Node>& node, const shared_ptr<ptree>& xml_tree);
+	void MakeAndAddChild(const shared_ptr<Node>& node, ptree::value_type& xml_element);
 public:
 	NodeFiller();
-	void Fill(shared_ptr<Node> &node, string node_name, ptree& xml_tree);
+	void Fill(const shared_ptr<Node> &node, string node_name, const shared_ptr<ptree>& xml_tree);
 };
 
 

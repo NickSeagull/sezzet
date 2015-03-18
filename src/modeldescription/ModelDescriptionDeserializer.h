@@ -17,7 +17,7 @@ class ModelDescriptionDeserializer{
 private:
 	string xml_path_;
 	shared_ptr<Node> element_tree_root_;
-	ptree raw_tree_;
+	shared_ptr<ptree> raw_tree_;
 	unordered_map<string, std::function<void()>> model_description_class_factory_;
 public:
 	ModelDescriptionDeserializer(string xml_path);
