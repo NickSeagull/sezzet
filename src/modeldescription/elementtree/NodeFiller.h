@@ -14,6 +14,9 @@ private:
 	ptree GetAttributeTree(const shared_ptr<ptree>& xml_tree);
 	void FillWithAttributes(const shared_ptr<Node>& node, const shared_ptr<ptree>& xml_tree);
 	void FillWithChilds(const shared_ptr<Node>& node, const shared_ptr<ptree>& xml_tree);
+
+	void MakeAndAddChildIfNotAttribute(ptree::value_type &xml_element, const shared_ptr<Node>& node);
+
 	void MakeAndAddChild(const shared_ptr<Node>& node, ptree::value_type& xml_element);
 public:
 	NodeFiller();

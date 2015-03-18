@@ -5,6 +5,7 @@ NodeFiller::NodeFiller(){}
 
 using boost::property_tree::ptree;
 using std::make_shared;
+using std::for_each;
 
 void NodeFiller::Fill(const shared_ptr<Node> &node, string node_name, const shared_ptr<ptree>& xml_tree){
 	node->name(node_name);
@@ -16,16 +17,20 @@ void NodeFiller::FillWithAttributes(const shared_ptr<Node>& node, const shared_p
 	for(auto& attribute : GetAttributeTree(xml_tree))
 		node->AddAttribute(attribute.first.data(), attribute.second.data());
 }
+
 ptree NodeFiller::GetAttributeTree(const shared_ptr<ptree>& xml_tree){
 	return xml_tree->get_child("<xmlattr>", MakeEmptyTree());
 }
 
 void NodeFiller::FillWithChilds(const shared_ptr<Node>& node, const shared_ptr<ptree>& xml_tree){
-	for(auto& xml_element : xml_tree)
-		if (strcmp(xml_element.first.data(), "<xmlattr>") != 0) MakeAndAddChild(node, xml_element);
+	for_each(xml_tree->begin(), xml_tree->end(), [&](ptree::value_type& xml_element){MakeAndAddChildIfNotAttribute(xml_element, node);});
 }
 
-void NodeFiller::MakeAndAddChild(const shared_ptr<Node>& node, ptree::value_type& xml_element){
+void NodeFiller::MakeAndAddChildIfNotAttribute(ptree::value_type &xml_element, const shared_ptr<Node>& node) {
+	if (strcmp(xml_element.first.data(), "<xmlattr>") != 0) MakeAndAddChild(node, xml_element);
+}
+
+void NodeFiller::MakeAndAddChild(const shared_ptr<Node>& node, ptree::value_type& xml_element) {
 	auto sub_node = make_shared<Node>();
 	Fill(sub_node, xml_element.first.data(), make_shared<ptree>(xml_element.second));
 	node->AddChild(sub_node);
