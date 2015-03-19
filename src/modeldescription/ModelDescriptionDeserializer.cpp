@@ -15,17 +15,14 @@ ptree EmptyPTree(){
 	return tree;
 }
 
-ModelDescriptionDeserializer::ModelDescriptionDeserializer(string xml_path) {
-	xml_path_ = xml_path;
-	element_tree_root_ = make_shared<Node>();
+ModelDescriptionDeserializer::ModelDescriptionDeserializer(string xml_path):
+	xml_path_(xml_path),
+	element_tree_root_(make_shared<Node>()){
 	InitializeFactoryMap();
 }
 
 
-ModelDescriptionDeserializer::~ModelDescriptionDeserializer() {
-	element_tree_root_.reset();
-	raw_tree_.reset();
-}
+ModelDescriptionDeserializer::~ModelDescriptionDeserializer() {}
 
 void ModelDescriptionDeserializer::InitializeFactoryMap() {
 	model_description_class_factory_["fmiModelDescription"] = std::bind(&ModelDescriptionDeserializer::FillModelDescription, this);
