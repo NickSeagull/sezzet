@@ -1,5 +1,6 @@
 #include "NodeFiller.h"
 #include <memory>
+#include <iostream>
 
 NodeFiller::NodeFiller(){}
 
@@ -7,7 +8,7 @@ using boost::property_tree::ptree;
 using std::make_shared;
 using std::for_each;
 
-void NodeFiller::Fill(const shared_ptr<Node> &node, string node_name, const shared_ptr<ptree>& xml_tree){
+void NodeFiller::Fill(const shared_ptr<Node>& node, string node_name, const shared_ptr<ptree>& xml_tree){
 	node->name(node_name);
 	FillWithAttributes(node, xml_tree);
 	FillWithChilds(node, xml_tree);

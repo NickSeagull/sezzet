@@ -17,6 +17,7 @@ ptree EmptyPTree(){
 
 ModelDescriptionDeserializer::ModelDescriptionDeserializer(string xml_path) {
 	xml_path_ = xml_path;
+	element_tree_root_ = make_shared<Node>();
 	InitializeFactoryMap();
 }
 

@@ -1,4 +1,5 @@
 #include "Node.h"
+#include <iostream>
 
 using std::make_shared;
 
@@ -23,6 +24,6 @@ string Node::GetAttribute(string attribute_name){
 	return result->second;
 }
 
-void Node::AddChild(shared_ptr<Node> child){
-	childs_.insert(childs_.end(), child);
+void Node::AddChild(shared_ptr<Node>& child){
+	childs_.push_back(child);
 }

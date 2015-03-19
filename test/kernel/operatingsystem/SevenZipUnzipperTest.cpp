@@ -15,9 +15,9 @@ void RemoveTemporalDirectories();
 using std::string;
 using std::ifstream;
 
-
-string zip_file_path = "C:\\Users\\Nikita\\Desarrollo\\SIANI\\sezzet\\resources\\win_32_bouncingBall.fmu";
-string output_folder_path = "C:\\Users\\Nikita\\Desarrollo\\SIANI\\sezzet\\resources\\win_32_bouncingBall_out\\";
+string project_path("C:\\Users\\ntchayka\\Documents\\Desarrollo\\sezzet\\");
+string zip_file_path(project_path + "resources\\win_32_bouncingBall.fmu");
+string output_folder_path(project_path + "resources\\win_32_bouncingBall_out\\");
 const int kBufferSize = 1024;
 
 void RemoveTemporalDirectories() {

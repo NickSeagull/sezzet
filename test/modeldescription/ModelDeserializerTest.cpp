@@ -3,7 +3,8 @@
 #include "../../src/modeldescription/v2/ModelDescription.h"
 #include "../../src/modeldescription/ModelDescriptionDeserializer.h"
 
-string xml_path("C:\\Users\\Nikita\\Desarrollo\\SIANI\\sezzet\\resources\\tank_md.xml");
+string project_root("C:\\Users\\ntchayka\\Documents\\Desarrollo\\sezzet\\");
+string xml_path(project_root + "resources\\tank_md.xml");
 
 BOOST_AUTO_TEST_CASE(a_deserializer_will_fill_all_the_class_hierarchy) {
 	ModelDescription model_description;
