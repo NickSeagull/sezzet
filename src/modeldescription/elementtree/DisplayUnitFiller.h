@@ -12,7 +12,7 @@ private:
     void SetField(DisplayUnit& display_unit, string field_name, string field_value);
 public:
     DisplayUnitFiller();
-    void Fill(DisplayUnit& display_unit, shared_ptr<Node> node);
+    void Fill(DisplayUnit& display_unit, NodePointer node);
 };
 
 

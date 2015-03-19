@@ -9,7 +9,7 @@ private:
     void SetField(IntegerType& integer_type, string field_name, string field_value);
 public:
     IntegerTypeFiller();
-    void Fill(IntegerType& integer_type, shared_ptr<Node> node);
+    void Fill(IntegerType& integer_type, NodePointer node);
 };
 
 

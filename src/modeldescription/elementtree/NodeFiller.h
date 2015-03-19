@@ -12,15 +12,15 @@ class NodeFiller{
 private:
 	ptree MakeEmptyTree();
 	ptree GetAttributeTree(const shared_ptr<ptree>& xml_tree);
-	void FillWithAttributes(const shared_ptr<Node>& node, const shared_ptr<ptree>& xml_tree);
-	void FillWithChilds(const shared_ptr<Node>& node, const shared_ptr<ptree>& xml_tree);
+	void FillWithAttributes(const NodePointer& node, const shared_ptr<ptree>& xml_tree);
+	void FillWithChilds(const NodePointer& node, const shared_ptr<ptree>& xml_tree);
 
-	void MakeAndAddChildIfNotAttribute(ptree::value_type &xml_element, const shared_ptr<Node>& node);
+	void MakeAndAddChildIfNotAttribute(ptree::value_type &xml_element, const NodePointer& node);
 
-	void MakeAndAddChild(const shared_ptr<Node>& node, ptree::value_type& xml_element);
+	void MakeAndAddChild(const NodePointer& node, ptree::value_type& xml_element);
 public:
 	NodeFiller();
-	void Fill(const shared_ptr<Node> &node, string node_name, const shared_ptr<ptree>& xml_tree);
+	void Fill(const NodePointer &node, string node_name, const shared_ptr<ptree>& xml_tree);
 };
 
 

@@ -2,7 +2,7 @@
 
 ToolFiller::ToolFiller(){}
 
-void ToolFiller::Fill(Tool& tool, shared_ptr<Node> node){
+void ToolFiller::Fill(Tool& tool, NodePointer node){
 	for(auto& pair : node->attributes())
 		SetField(tool, pair.first, pair.second);
 }

@@ -9,7 +9,7 @@ private:
     void SetField(StringType& string_type, string field_name, string field_value);
 public:
     StringTypeFiller();
-    void Fill(StringType& string_type, shared_ptr<Node> node);
+    void Fill(StringType& string_type, NodePointer node);
 };
 
 

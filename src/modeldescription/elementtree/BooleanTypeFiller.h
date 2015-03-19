@@ -9,7 +9,7 @@ private:
     void SetField(BooleanType& boolean_type, string field_name, string field_value);
 public:
     BooleanTypeFiller();
-    void Fill(BooleanType& boolean_type, shared_ptr<Node> node);
+    void Fill(BooleanType& boolean_type, NodePointer node);
 };
 
 

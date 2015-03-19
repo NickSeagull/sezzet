@@ -10,8 +10,8 @@ unordered_map<string, string> Node::attributes() { return attributes_; }
 void Node::attributes(unordered_map<string, string> new_attributes){attributes_ = new_attributes;}
 string Node::name(){return name_;}
 void Node::name(string new_name){name_ = new_name;}
-vector<shared_ptr<Node>> Node::childs(){return childs_;}
-void Node::childs(vector<shared_ptr<Node>> new_childs){childs_ = new_childs;}
+vector<NodePointer> Node::childs(){return childs_;}
+void Node::childs(vector<NodePointer> new_childs){childs_ = new_childs;}
 
 
 void Node::AddAttribute(string attribute_name, string value) {
@@ -24,6 +24,6 @@ string Node::GetAttribute(string attribute_name){
 	return result->second;
 }
 
-void Node::AddChild(shared_ptr<Node>& child){
+void Node::AddChild(NodePointer& child){
 	childs_.push_back(child);
 }

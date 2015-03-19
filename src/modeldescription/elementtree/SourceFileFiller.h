@@ -12,7 +12,7 @@ private:
     void SetField(SourceFile& source_file, string field_name, string field_value);
 public:
 	SourceFileFiller();
-	void Fill(SourceFile& source_file, shared_ptr<Node> node);
+	void Fill(SourceFile& source_file, NodePointer node);
 };
 
 

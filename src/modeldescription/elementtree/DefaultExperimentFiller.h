@@ -12,7 +12,7 @@ private:
     void SetField(DefaultExperiment& default_experiment, string field_name, string field_value);
 public:
     DefaultExperimentFiller();
-    void Fill(DefaultExperiment& default_experiment, shared_ptr<Node> node);
+    void Fill(DefaultExperiment& default_experiment, NodePointer node);
 };
 
 

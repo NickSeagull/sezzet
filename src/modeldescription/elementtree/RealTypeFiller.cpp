@@ -2,7 +2,7 @@
 
 RealTypeFiller::RealTypeFiller(){}
 
-void RealTypeFiller::Fill(RealType& real_type, shared_ptr<Node> node){
+void RealTypeFiller::Fill(RealType& real_type, NodePointer node){
 	for(auto& pair : node->attributes())
 		SetField(real_type, pair.first, pair.second);
 }

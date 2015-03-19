@@ -3,7 +3,7 @@
 
 ModelExchangeFiller::ModelExchangeFiller(){}
 
-void ModelExchangeFiller::Fill(ModelExchange& model_exchange, shared_ptr<Node> node){
+void ModelExchangeFiller::Fill(ModelExchange& model_exchange, NodePointer node){
 	for(auto& pair : node->attributes())
 		SetField(model_exchange, pair.first, pair.second);
 	for(auto& child : node->childs())
@@ -21,11 +21,11 @@ void ModelExchangeFiller::SetField(ModelExchange& model_exchange, string field_n
 	if(field_name == "canSerializeFmuState") model_exchange.can_serialize_fmu_state(field_value == "true");
 }
 
-void ModelExchangeFiller::SetChild(ModelExchange& model_exchange, shared_ptr<Node> child){
+void ModelExchangeFiller::SetChild(ModelExchange& model_exchange, NodePointer child){
 	if(child->name() == "SourceFile") FillAndAddSourceFile(model_exchange, child);	
 }
 
-void ModelExchangeFiller::FillAndAddSourceFile(ModelExchange& model_exchange, shared_ptr<Node> node){
+void ModelExchangeFiller::FillAndAddSourceFile(ModelExchange& model_exchange, NodePointer node){
 	SourceFileFiller filler;
 	SourceFile source_file;
 	filler.Fill(source_file, node);

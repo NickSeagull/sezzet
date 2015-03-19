@@ -14,7 +14,7 @@ private:
     void SetField(BaseUnit& base_unit, string field_name, string field_value);
 public:
 	BaseUnitFiller();
-    void Fill(BaseUnit& base_unit, shared_ptr<Node> node);
+    void Fill(BaseUnit& base_unit, NodePointer node);
 };
 
 

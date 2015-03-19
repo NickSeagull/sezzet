@@ -8,16 +8,16 @@
 class ScalarVariableFiller{
 private:
     void SetField(ScalarVariable& scalar_variable, string field_name, string field_value);
-	void SetChild(ScalarVariable& scalar_variable, shared_ptr<Node> child);
-	void FillAndSetReal(ScalarVariable& scalar_variable, shared_ptr<Node> child);
-	void FillAndSetInteger(ScalarVariable& scalar_variable, shared_ptr<Node> child);
-	void FillAndSetBoolean(ScalarVariable& scalar_variable, shared_ptr<Node> child);
-	void FillAndSetString(ScalarVariable& scalar_variable, shared_ptr<Node> child);
-	void FillAndSetAnnotations(ScalarVariable& scalar_variable, shared_ptr<Node> child);
-	void FillAndAddAnnotation(ScalarVariable& scalar_variable, shared_ptr<Node> child, ToolFiller filler);
+	void SetChild(ScalarVariable& scalar_variable, NodePointer child);
+	void FillAndSetReal(ScalarVariable& scalar_variable, NodePointer child);
+	void FillAndSetInteger(ScalarVariable& scalar_variable, NodePointer child);
+	void FillAndSetBoolean(ScalarVariable& scalar_variable, NodePointer child);
+	void FillAndSetString(ScalarVariable& scalar_variable, NodePointer child);
+	void FillAndSetAnnotations(ScalarVariable& scalar_variable, NodePointer child);
+	void FillAndAddAnnotation(ScalarVariable& scalar_variable, NodePointer child, ToolFiller filler);
 public:
 	ScalarVariableFiller();
-	void Fill(ScalarVariable& scalar_variable, shared_ptr<Node> node);
+	void Fill(ScalarVariable& scalar_variable, NodePointer node);
 };
 
 

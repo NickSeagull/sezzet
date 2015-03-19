@@ -1,7 +1,7 @@
 #include "SourceFileFiller.h"
 SourceFileFiller::SourceFileFiller(){}
 
-void SourceFileFiller::Fill(SourceFile& source_file, shared_ptr<Node> node){
+void SourceFileFiller::Fill(SourceFile& source_file, NodePointer node){
 	for(auto& pair : node->attributes())
 		SetField(source_file, pair.first, pair.second);
 }

@@ -2,7 +2,7 @@
 
 IntegerTypeFiller::IntegerTypeFiller(){}
 
-void IntegerTypeFiller::Fill(IntegerType& integer_type, shared_ptr<Node> node){
+void IntegerTypeFiller::Fill(IntegerType& integer_type, NodePointer node){
 	for(auto& pair : node->attributes())
 		SetField(integer_type, pair.first, pair.second);
 }

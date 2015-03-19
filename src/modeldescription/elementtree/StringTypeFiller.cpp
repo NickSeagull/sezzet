@@ -2,7 +2,7 @@
 
 StringTypeFiller::StringTypeFiller(){}
 
-void StringTypeFiller::Fill(StringType& string_type, shared_ptr<Node> node){
+void StringTypeFiller::Fill(StringType& string_type, NodePointer node){
 	for(auto& pair : node->attributes())
 		SetField(string_type, pair.first, pair.second);
 }

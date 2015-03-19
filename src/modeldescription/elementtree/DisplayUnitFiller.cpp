@@ -2,7 +2,7 @@
 
 DisplayUnitFiller::DisplayUnitFiller(){}
 
-void DisplayUnitFiller::Fill(DisplayUnit& display_unit, shared_ptr<Node> node){
+void DisplayUnitFiller::Fill(DisplayUnit& display_unit, NodePointer node){
 	for(auto& pair : node->attributes())
 		SetField(display_unit, pair.first, pair.second);
 }

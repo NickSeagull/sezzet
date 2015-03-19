@@ -2,7 +2,7 @@
 
 BooleanTypeFiller::BooleanTypeFiller(){}
 
-void BooleanTypeFiller::Fill(BooleanType& boolean_type, shared_ptr<Node> node){
+void BooleanTypeFiller::Fill(BooleanType& boolean_type, NodePointer node){
 	for(auto& pair : node->attributes())
 		SetField(boolean_type, pair.first, pair.second);
 }

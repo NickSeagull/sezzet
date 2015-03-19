@@ -9,7 +9,7 @@ private:
     void SetField(Unknown& unknown, string field_name, string field_value);
 public:
     UnknownFiller();
-    void Fill(Unknown& unknown, shared_ptr<Node> node);
+    void Fill(Unknown& unknown, NodePointer node);
 };
 
 

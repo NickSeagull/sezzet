@@ -2,7 +2,7 @@
 
 DefaultExperimentFiller::DefaultExperimentFiller(){}
 
-void DefaultExperimentFiller::Fill(DefaultExperiment& default_experiment, shared_ptr<Node> node){
+void DefaultExperimentFiller::Fill(DefaultExperiment& default_experiment, NodePointer node){
 	for(auto& pair : node->attributes())
 		SetField(default_experiment, pair.first, pair.second);
 }

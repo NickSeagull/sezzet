@@ -2,7 +2,7 @@
 
 CategoryFiller::CategoryFiller(){}
 
-void CategoryFiller::Fill(Category& category, shared_ptr<Node> node){
+void CategoryFiller::Fill(Category& category, NodePointer node){
 	for(auto& pair : node->attributes())
 		SetField(category, pair.first, pair.second);
 }
