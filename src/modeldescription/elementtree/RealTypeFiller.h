@@ -9,7 +9,7 @@ private:
     void SetField(RealType& real_type, string field_name, string field_value);
 public:
     RealTypeFiller();
-    void Fill(RealType& real_type, NodePointer node);
+    void Fill(RealType& real_type, shared_ptr<Node> node);
 };
 
 

@@ -7,14 +7,14 @@
 
 class ModelStructureFiller{
 private:
-    void SetChild(ModelStructure& model_structure, NodePointer child);
-	void FillAndAddOutputs(ModelStructure& model_structure, NodePointer node);
-	void FillAndAddOutput(ModelStructure& model_structure, NodePointer child, UnknownFiller filler);
-	void FillAndAddDerivatives(ModelStructure& model_structure, NodePointer node);
-	void FillAndAddDerivative(ModelStructure& model_structure, NodePointer child, UnknownFiller filler);
+    void SetChild(ModelStructure& model_structure, shared_ptr<Node> child);
+	void FillAndAddOutputs(ModelStructure& model_structure, shared_ptr<Node> node);
+	void FillAndAddOutput(ModelStructure& model_structure, shared_ptr<Node> child, UnknownFiller filler);
+	void FillAndAddDerivatives(ModelStructure& model_structure, shared_ptr<Node> node);
+	void FillAndAddDerivative(ModelStructure& model_structure, shared_ptr<Node> child, UnknownFiller filler);
 public:
 	ModelStructureFiller();
-	void Fill(ModelStructure& model_structure, NodePointer node);
+	void Fill(ModelStructure& model_structure, shared_ptr<Node> node);
 };
 
 

@@ -12,7 +12,7 @@ private:
     void SetField(Category& category, string field_name, string field_value);
 public:
     CategoryFiller();
-    void Fill(Category& category, NodePointer node);
+    void Fill(Category& category, shared_ptr<Node> node);
 };
 
 

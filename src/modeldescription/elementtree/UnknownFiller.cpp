@@ -2,7 +2,7 @@
 
 UnknownFiller::UnknownFiller(){}
 
-void UnknownFiller::Fill(Unknown& unknown, NodePointer node) {
+void UnknownFiller::Fill(Unknown& unknown, shared_ptr<Node> node) {
 	for(auto& pair : node->attributes())
 		SetField(unknown, pair.first, pair.second);
 }

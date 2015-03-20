@@ -7,9 +7,8 @@ string project_root("C:\\Users\\ntchayka\\Documents\\Desarrollo\\sezzet\\");
 string xml_path(project_root + "resources\\tank_md.xml");
 
 BOOST_AUTO_TEST_CASE(a_deserializer_will_fill_all_the_class_hierarchy) {
-	ModelDescription model_description;
-	ModelDescriptionDeserializer deserializer(xml_path);
-	deserializer.Deserialize(model_description);
-	BOOST_CHECK_EQUAL("tankv3", model_description.model_name());
-	BOOST_CHECK_EQUAL("tankv3", model_description.co_simulation().model_identifier());
+	ModelDescriptionDeserializer deserializer;
+	shared_ptr<ModelDescription> model_description(deserializer.Deserialize(xml_path));
+	BOOST_CHECK_EQUAL("tankv3", model_description->model_name());
+	BOOST_CHECK_EQUAL("tankv3", model_description->co_simulation().model_identifier());
 }

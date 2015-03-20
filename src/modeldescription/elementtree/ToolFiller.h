@@ -12,7 +12,7 @@ private:
     void SetField(Tool& tool, string field_name, string field_value);
 public:
     ToolFiller();
-    void Fill(Tool& tool, NodePointer node);
+    void Fill(Tool& tool, shared_ptr<Node> node);
 };
 
 

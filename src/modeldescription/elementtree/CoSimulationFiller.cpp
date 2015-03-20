@@ -6,7 +6,7 @@ using std::make_shared;
 
 CoSimulationFiller::CoSimulationFiller(){}
 
-void CoSimulationFiller::Fill(CoSimulation& co_simulation, NodePointer node){
+void CoSimulationFiller::Fill(CoSimulation& co_simulation, shared_ptr<Node> node){
 	for(auto& pair : node->attributes())
 		SetField(co_simulation, pair.first, pair.second);
 	for(auto& child : node->childs())
@@ -28,11 +28,11 @@ void CoSimulationFiller::SetField(CoSimulation& co_simulation, string field_name
 	if(field_name == "providesDirectionalDerivative") co_simulation.provides_directional_derivative(field_value == "true");
 }
 
-void CoSimulationFiller::SetChild(CoSimulation& co_simulation, NodePointer child){
+void CoSimulationFiller::SetChild(CoSimulation& co_simulation, shared_ptr<Node> child){
 	if(child->name() == "SourceFile") FillAndAddSourceFile(co_simulation, child);
 }
 
-void CoSimulationFiller::FillAndAddSourceFile(CoSimulation& co_simulation, NodePointer node){
+void CoSimulationFiller::FillAndAddSourceFile(CoSimulation& co_simulation, shared_ptr<Node> node){
 	SourceFileFiller filler;
 	SourceFile source_file;
 	filler.Fill(source_file, node);

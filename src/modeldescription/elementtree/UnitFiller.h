@@ -7,12 +7,12 @@
 class UnitFiller{
 private:
 	void SetField(Unit& unit, string field_name, string field_value);
-	void SetChild(Unit& unit, NodePointer child);
-	void FillAndSetBaseUnit(Unit& unit, NodePointer child);
-	void FillAndAddDisplayUnit(Unit& unit, NodePointer child);
+	void SetChild(Unit& unit, shared_ptr<Node> child);
+	void FillAndSetBaseUnit(Unit& unit, shared_ptr<Node> child);
+	void FillAndAddDisplayUnit(Unit& unit, shared_ptr<Node> child);
 public:
 	UnitFiller();
-	void Fill(Unit& unit, NodePointer node);
+	void Fill(Unit& unit, shared_ptr<Node> node);
 };
 
 

@@ -10,11 +10,11 @@ using std::shared_ptr;
 class ModelExchangeFiller{
 private:
 	void SetField(ModelExchange& model_exchange, string field_name, string field_value);
-	void SetChild(ModelExchange& model_exchange, NodePointer child);
-	void FillAndAddSourceFile(ModelExchange& model_exchange, NodePointer node);
+	void SetChild(ModelExchange& model_exchange, shared_ptr<Node> child);
+	void FillAndAddSourceFile(ModelExchange& model_exchange, shared_ptr<Node> node);
 public:
 	ModelExchangeFiller();
-	void Fill(ModelExchange& model_exchange, NodePointer node); 
+	void Fill(ModelExchange& model_exchange, shared_ptr<Node> node); 
 };
 
 

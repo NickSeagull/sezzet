@@ -5,7 +5,7 @@ using std::stoi;
 
 BaseUnitFiller::BaseUnitFiller(){}
 
-void BaseUnitFiller::Fill(BaseUnit& base_unit, NodePointer node){
+void BaseUnitFiller::Fill(BaseUnit& base_unit, shared_ptr<Node> node){
 	for(auto& pair : node->attributes())
 		SetField(base_unit, pair.first, pair.second);
 }

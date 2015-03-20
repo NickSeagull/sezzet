@@ -6,8 +6,6 @@
 #include <vector>
 #include <memory>
 
-typedef NodePointer NodePointer;
-
 using std::unordered_map;
 using std::string;
 using std::vector;
@@ -17,17 +15,17 @@ class Node{
 private:
 	unordered_map<string, string> attributes_;
 	string name_;
-	vector<NodePointer> childs_;
+	vector<shared_ptr<Node>> childs_;
 public:
-	void childs(vector<NodePointer> new_childs);
-	vector<NodePointer> childs();
+	void childs(vector<shared_ptr<Node>> new_childs);
+	vector<shared_ptr<Node>> childs();
 	void name(string new_name);
 	string name();
 	void attributes(unordered_map<string, string> new_attributes);
 	unordered_map<string, string> attributes();
 	void AddAttribute(string attribute_name, string value);
 	string GetAttribute(string attribute_name);
-	void AddChild(NodePointer& child);
+	void AddChild(shared_ptr<Node>& child);
 	Node();
 	~Node();
 };
