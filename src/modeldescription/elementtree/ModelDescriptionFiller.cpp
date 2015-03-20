@@ -28,7 +28,7 @@ void ModelDescriptionFiller::SetField(ModelDescription& model_description, strin
 	if(field_name == "numberOfEventIndicators") model_description.number_of_event_indicators(stoi(field_value));
 }
 
-void ModelDescriptionFiller::SetChild(ModelDescription& model_description, NodePointer child){
+void ModelDescriptionFiller::SetChild(ModelDescription& model_description, shared_ptr<Node> child){
 	if(child->name() == "CoSimulation") FillAndSetCoSimulation(model_description, child);
 	if(child->name() == "ModelExchange") FillAndSetModelExchange(model_description, child);
 	if(child->name() == "UnitDefinitions") FillAndSetUnitDefinitions(model_description, child);
@@ -39,77 +39,77 @@ void ModelDescriptionFiller::SetChild(ModelDescription& model_description, NodeP
 	if(child->name() == "ModelStructure") FillAndSetModelStructure(model_description, child); 
 }
 
-void ModelDescriptionFiller::FillAndSetCoSimulation(ModelDescription& model_description, NodePointer node){
+void ModelDescriptionFiller::FillAndSetCoSimulation(ModelDescription& model_description, shared_ptr<Node> node){
 	CoSimulationFiller filler;
 	CoSimulation co_simulation;
 	filler.Fill(co_simulation, node);
 	model_description.co_simulation(co_simulation);
 }
 
-void ModelDescriptionFiller::FillAndSetModelExchange(ModelDescription& model_description, NodePointer node){
+void ModelDescriptionFiller::FillAndSetModelExchange(ModelDescription& model_description, shared_ptr<Node> node){
 	ModelExchangeFiller filler;
 	ModelExchange model_exchange;
 	filler.Fill(model_exchange, node);
 	model_description.model_exchange(model_exchange);
 }
 
-void ModelDescriptionFiller::FillAndSetUnitDefinitions(ModelDescription& model_description, NodePointer node){
+void ModelDescriptionFiller::FillAndSetUnitDefinitions(ModelDescription& model_description, shared_ptr<Node> node){
 	UnitFiller filler;
 	for(auto& child : node->childs())
 		FillAndAddUnit(model_description, child, filler);
 }
 
-void ModelDescriptionFiller::FillAndAddUnit(ModelDescription& model_description, NodePointer child, UnitFiller& filler){
+void ModelDescriptionFiller::FillAndAddUnit(ModelDescription& model_description, shared_ptr<Node> child, UnitFiller& filler){
 	Unit unit;
 	filler.Fill(unit, child);
 	model_description.AddUnitDefinition(unit);
 }
 
-void ModelDescriptionFiller::FillAndSetLogCategories(ModelDescription& model_description, NodePointer node){
+void ModelDescriptionFiller::FillAndSetLogCategories(ModelDescription& model_description, shared_ptr<Node> node){
 	CategoryFiller filler;
 	for(auto& child : node->childs())
 		FillAndAddCategory(model_description, child, filler);
 }
 
-void ModelDescriptionFiller::FillAndAddCategory(ModelDescription& model_description, NodePointer child, CategoryFiller& filler){
+void ModelDescriptionFiller::FillAndAddCategory(ModelDescription& model_description, shared_ptr<Node> child, CategoryFiller& filler){
 	Category category;
 	filler.Fill(category, child);
 	model_description.AddLogCategory(category);
 }
 
-void ModelDescriptionFiller::FillAndSetDefaultExperiment(ModelDescription& model_description, NodePointer node){
+void ModelDescriptionFiller::FillAndSetDefaultExperiment(ModelDescription& model_description, shared_ptr<Node> node){
 	DefaultExperiment default_experiment;
 	DefaultExperimentFiller filler;
 	filler.Fill(default_experiment, node);
 	model_description.default_experiment(default_experiment);
 }
 
-void ModelDescriptionFiller::FillAndSetVendorAnnotations(ModelDescription& model_description, NodePointer node){
+void ModelDescriptionFiller::FillAndSetVendorAnnotations(ModelDescription& model_description, shared_ptr<Node> node){
 	ToolFiller filler;
 	for(auto& child : node->childs())
 		FillAndAddVendorAnnotation(model_description, child, filler);
 }
 
-void ModelDescriptionFiller::FillAndAddVendorAnnotation(ModelDescription& model_description, NodePointer child, ToolFiller& filler){
+void ModelDescriptionFiller::FillAndAddVendorAnnotation(ModelDescription& model_description, shared_ptr<Node> child, ToolFiller& filler){
 	Tool tool;
 	filler.Fill(tool, child);
 	model_description.AddVendorAnnotations(tool);
 }
 
-void ModelDescriptionFiller::FillAndSetModelVariables(ModelDescription& model_description, NodePointer node){
+void ModelDescriptionFiller::FillAndSetModelVariables(ModelDescription& model_description, shared_ptr<Node> node){
 	ScalarVariableFiller filler;
 	for(auto& child : node->childs())
 		FillAndAddScalarVariable(model_description, child, filler);
 }
 
-void ModelDescriptionFiller::FillAndAddScalarVariable(ModelDescription& model_description, NodePointer node, ScalarVariableFiller& filler){
+void ModelDescriptionFiller::FillAndAddScalarVariable(ModelDescription& model_description, shared_ptr<Node> node, ScalarVariableFiller& filler){
 	ScalarVariable scalar_variable;
 	filler.Fill(scalar_variable, node);
 	model_description.AddModelVariable(scalar_variable);
 	model_description.AddVariableName(scalar_variable.name());
 }
 
-void ModelDescriptionFiller::FillAndSetModelStructure(ModelDescription& model_description, NodePointer node){
+void ModelDescriptionFiller::FillAndSetModelStructure(ModelDescription& model_description, shared_ptr<Node> node){
 	ModelStructureFiller filler;
 	ModelStructure model_structure;
 	filler.Fill(model_structure, node);

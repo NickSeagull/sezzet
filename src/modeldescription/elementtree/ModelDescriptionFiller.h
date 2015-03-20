@@ -11,19 +11,19 @@
 class ModelDescriptionFiller{
 private:
 	void SetField(ModelDescription& model_description, string field_name, string field_value);
-	void SetChild(ModelDescription& model_description, NodePointer child);
-	void FillAndSetCoSimulation(ModelDescription& model_description, NodePointer node);
-	void FillAndSetModelExchange(ModelDescription& model_description, NodePointer node);
-	void FillAndSetUnitDefinitions(ModelDescription& model_description, NodePointer node);
-	void FillAndSetDefaultExperiment(ModelDescription& model_description, NodePointer node);
-	void FillAndSetVendorAnnotations(ModelDescription& model_description, NodePointer node);
-	void FillAndSetModelVariables(ModelDescription& model_description, NodePointer node);
-	void FillAndAddUnit(ModelDescription& model_description, NodePointer child, UnitFiller& filler);
-	void FillAndSetLogCategories(ModelDescription& model_description, NodePointer child);
-	void FillAndAddCategory(ModelDescription& model_description, NodePointer child, CategoryFiller& filler);
-	void FillAndAddVendorAnnotation(ModelDescription& model_description, NodePointer child, ToolFiller& filler);
-	void FillAndAddScalarVariable(ModelDescription& model_description, NodePointer node, ScalarVariableFiller& filler);
-	void FillAndSetModelStructure(ModelDescription& model_description, NodePointer node);
+	void SetChild(ModelDescription& model_description, shared_ptr<Node> child);
+	void FillAndSetCoSimulation(ModelDescription& model_description, shared_ptr<Node> node);
+	void FillAndSetModelExchange(ModelDescription& model_description, shared_ptr<Node> node);
+	void FillAndSetUnitDefinitions(ModelDescription& model_description, shared_ptr<Node> node);
+	void FillAndSetDefaultExperiment(ModelDescription& model_description, shared_ptr<Node> node);
+	void FillAndSetVendorAnnotations(ModelDescription& model_description, shared_ptr<Node> node);
+	void FillAndSetModelVariables(ModelDescription& model_description, shared_ptr<Node> node);
+	void FillAndAddUnit(ModelDescription& model_description, shared_ptr<Node> child, UnitFiller& filler);
+	void FillAndSetLogCategories(ModelDescription& model_description, shared_ptr<Node> child);
+	void FillAndAddCategory(ModelDescription& model_description, shared_ptr<Node> child, CategoryFiller& filler);
+	void FillAndAddVendorAnnotation(ModelDescription& model_description, shared_ptr<Node> child, ToolFiller& filler);
+	void FillAndAddScalarVariable(ModelDescription& model_description, shared_ptr<Node> node, ScalarVariableFiller& filler);
+	void FillAndSetModelStructure(ModelDescription& model_description, shared_ptr<Node> node);
 public:
 	ModelDescriptionFiller();
 	void Fill(ModelDescription& model_description, Node& node); 
