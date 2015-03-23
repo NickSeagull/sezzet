@@ -17,7 +17,7 @@ using std::function;
 using boost::property_tree::ptree;
 
 typedef shared_ptr<ptree> PtreePointer;
-typedef void(*FillerFunction)(shared_ptr<ModelDescription>, shared_ptr<Node>);
+typedef void(*FillerFunction)(shared_ptr<ModelDescription>&, shared_ptr<Node>&);
 
 class ModelDescriptionDeserializer{
 public:
