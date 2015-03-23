@@ -69,16 +69,53 @@ void FillCoSimulation(shared_ptr<ModelDescription>& model_description, shared_pt
 }
 
 void FillLogCategories(shared_ptr<ModelDescription>& model_description, shared_ptr<Node>& node) {
+	FillChilds(node, model_description);
+}
+
+void FillLogCategoriesCategory(shared_ptr<ModelDescription>& model_description, shared_ptr<Node>& node) {
+	Category category;
+	for (auto& pair : node->attributes()) {
+		string field_name(pair.first);
+		string field_value(pair.second);
+		if(field_name == "name") category.name(field_value);
+		else if(field_name == "description") category.description(field_value);
+	}
+	model_description->AddLogCategory(category);
+}
+
+void FillModelExchange(shared_ptr<ModelDescription>& model_description, shared_ptr<Node>& node) {
+	ModelExchange model_exchange;
+	for (auto& pair : node->attributes()) {
+		string field_name(pair.first);
+		string field_value(pair.second);
+		if (field_name == "modelIdentifier") model_exchange.model_identifier(field_value);
+		else if (field_name == "needsExecutionTool") model_exchange.needs_execution_tool(field_value == "true");
+		else if (field_name == "completedIntegratorStepNotNeeded") model_exchange.completed_integrator_step_not_needed(field_value == "true");
+		else if (field_name == "canBeInstantiatedOnlyOncePerProcess") model_exchange.can_be_instantiated_only_once_per_process(field_value == "true");
+		else if (field_name == "canNotUseMemoryManagementFunctions") model_exchange.can_not_use_memory_management_functions(field_value == "true");
+		else if (field_name == "canGetAndSetFmuState") model_exchange.can_get_and_set_fmu_state(field_value == "true");
+		else if (field_name == "providesDirectionalDerivative") model_exchange.provides_directional_derivative(field_value == "true");
+		else if (field_name == "canSerializeFmuState") model_exchange.can_serialize_fmu_state(field_value == "true");
+	}
+	model_description->model_exchange(model_exchange);
+	FillChilds(node, model_description);
+}
+
+void FillVendorAnnotations(shared_ptr<ModelDescription>& model_description, shared_ptr<Node>& node) {
 	for (auto& child : node->childs()) {
-		Category category;
+		Tool tool;
 		for (auto& pair : child->attributes()) {
 			string field_name(pair.first);
 			string field_value(pair.second);
-			if(field_name == "name") category.name(field_value);
-			if(field_name == "description") category.description(field_value);
+			if(field_name == "name") tool.name(field_value);
 		}
-		model_description->AddLogCategory(category);
+		model_description->AddVendorAnnotations(tool);
 	}
+}
+
+void FillModelVariables(shared_ptr<ModelDescription>& model_description, shared_ptr<Node>& node) {
+	for (auto& child : node->childs())
+		FillChilds(child, model_description);
 }
 
 
@@ -93,6 +130,9 @@ ModelDescriptionDeserializer::ModelDescriptionDeserializer(){
 	filler_functions_map["fmiModelDescription"] = &FillModelDescription;
 	filler_functions_map["fmiModelDescription/CoSimulation"] = &FillCoSimulation;
 	filler_functions_map["fmiModelDescription/LogCategories"] = &FillLogCategories;
+	filler_functions_map["fmiModelDescription/LogCategories/Category"] = &FillLogCategoriesCategory;
+	filler_functions_map["fmiModelDescription/ModelExchange"] = &FillModelExchange;
+	filler_functions_map["fmiModelDescription/VendorAnnotations"] = &FillVendorAnnotations;
 }
 
 ModelDescriptionDeserializer::~ModelDescriptionDeserializer() {}
