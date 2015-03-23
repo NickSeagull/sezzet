@@ -102,15 +102,17 @@ void FillModelExchange(shared_ptr<ModelDescription>& model_description, shared_p
 }
 
 void FillVendorAnnotations(shared_ptr<ModelDescription>& model_description, shared_ptr<Node>& node) {
-	for (auto& child : node->childs()) {
-		Tool tool;
-		for (auto& pair : child->attributes()) {
-			string field_name(pair.first);
-			string field_value(pair.second);
-			if(field_name == "name") tool.name(field_value);
-		}
-		model_description->AddVendorAnnotations(tool);
+	FillChilds(node, model_description);
+}
+
+void FillVendorAnnotationsTool(shared_ptr<ModelDescription>& model_description, shared_ptr<Node>& node) {
+	Tool tool;
+	for (auto& pair : node->attributes()) {
+		string field_name(pair.first);
+		string field_value(pair.second);
+		if(field_name == "name") tool.name(field_value);
 	}
+	model_description->AddVendorAnnotations(tool);
 }
 
 void FillModelVariables(shared_ptr<ModelDescription>& model_description, shared_ptr<Node>& node) {
@@ -133,6 +135,7 @@ ModelDescriptionDeserializer::ModelDescriptionDeserializer(){
 	filler_functions_map["fmiModelDescription/LogCategories/Category"] = &FillLogCategoriesCategory;
 	filler_functions_map["fmiModelDescription/ModelExchange"] = &FillModelExchange;
 	filler_functions_map["fmiModelDescription/VendorAnnotations"] = &FillVendorAnnotations;
+	filler_functions_map["fmiModelDescription/VendorAnnotations/Tool"] = &FillVendorAnnotationsTool;
 }
 
 ModelDescriptionDeserializer::~ModelDescriptionDeserializer() {}

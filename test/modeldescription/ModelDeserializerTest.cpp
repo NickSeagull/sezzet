@@ -13,5 +13,5 @@ BOOST_AUTO_TEST_CASE(a_deserializer_will_fill_all_the_class_hierarchy) {
 	BOOST_REQUIRE_EQUAL("tankv3", model_description->model_name());
 	BOOST_REQUIRE_EQUAL("tankv3", model_description->co_simulation().model_identifier());
 	BOOST_REQUIRE_EQUAL("logLevel1 - fatal errors", model_description->log_categories().at(0).description());
-	//BOOST_REQUIRE_EQUAL("JModelica.org", model_description->vendor_annotations().at(0).name());
+	BOOST_REQUIRE_EQUAL("JModelica.org", model_description->vendor_annotations().at(0).name());
 }
