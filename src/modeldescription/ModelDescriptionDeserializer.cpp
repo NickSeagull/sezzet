@@ -18,13 +18,13 @@ void FillCoSimulation(shared_ptr<ModelDescription> model_description, shared_ptr
 
 std::map<string, FillerFunction> filler_functions_map;
 
-void CallFillerIfItExists(shared_ptr<Node> child, shared_ptr<ModelDescription>& model_description) {
+void CallFillerIfExists(shared_ptr<Node> child, shared_ptr<ModelDescription>& model_description) {
 	if (filler_functions_map.find(child->name()) != filler_functions_map.end())
 		filler_functions_map[child->name()](model_description, child);
 }
 
 void FillChilds(shared_ptr<Node>& node, shared_ptr<ModelDescription>& model_description) {
-	for (auto& child : node->childs()) CallFillerIfItExists(child, model_description);
+	for (auto& child : node->childs()) CallFillerIfExists(child, model_description);
 }
 
 void FillModelDescription (shared_ptr<ModelDescription>& model_description, shared_ptr<Node>& node) {
@@ -68,6 +68,19 @@ void FillCoSimulation(shared_ptr<ModelDescription>& model_description, shared_pt
 	FillChilds(node, model_description);
 }
 
+void FillLogCategories(shared_ptr<ModelDescription>& model_description, shared_ptr<Node>& node) {
+	for (auto& child : node->childs()) {
+		Category category;
+		for (auto& pair : child->attributes()) {
+			string field_name(pair.first);
+			string field_value(pair.second);
+			if(field_name == "name") category.name(field_value);
+			if(field_name == "description") category.description(field_value);
+		}
+		model_description->AddLogCategory(category);
+	}
+}
+
 
 
 
@@ -79,6 +92,7 @@ ptree EmptyPTree(){
 ModelDescriptionDeserializer::ModelDescriptionDeserializer(){
 	filler_functions_map["fmiModelDescription"] = &FillModelDescription;
 	filler_functions_map["fmiModelDescription/CoSimulation"] = &FillCoSimulation;
+	filler_functions_map["fmiModelDescription/LogCategories"] = &FillLogCategories;
 }
 
 ModelDescriptionDeserializer::~ModelDescriptionDeserializer() {}

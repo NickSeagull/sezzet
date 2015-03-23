@@ -9,7 +9,8 @@ string xml_path(project_root + "resources\\tank_md.xml");
 BOOST_AUTO_TEST_CASE(a_deserializer_will_fill_all_the_class_hierarchy) {
 	ModelDescriptionDeserializer deserializer;
 	shared_ptr<ModelDescription> model_description(deserializer.Deserialize(xml_path));
-	BOOST_CHECK_EQUAL("tankv3", model_description->model_name());
-	BOOST_CHECK_EQUAL("tankv3", model_description->co_simulation().model_identifier());
-	BOOST_CHECK_EQUAL("logLevel1 - fatal errors", model_description->log_categories().at(0).description());
+
+	BOOST_REQUIRE_EQUAL("tankv3", model_description->model_name());
+	BOOST_REQUIRE_EQUAL("tankv3", model_description->co_simulation().model_identifier());
+	BOOST_REQUIRE_EQUAL("logLevel1 - fatal errors", model_description->log_categories().at(0).description());
 }
