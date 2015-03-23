@@ -1,6 +1,7 @@
 #include "ModelDescriptionDeserializer.h"
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/xml_parser.hpp>
+#include <boost/assign.hpp>
 #include "elementtree/node.h"
 #include "elementtree/NodeFiller.h"
 #include "elementtree/ModelDescriptionFiller.h"
@@ -10,20 +11,23 @@
 
 using boost::property_tree::ptree;
 using std::make_shared;
+using boost::assign::list_of;
 
 void FillModelDescription(shared_ptr<ModelDescription> model_description, shared_ptr<Node> node);
 void FillCoSimulation(shared_ptr<ModelDescription> model_description, shared_ptr<Node> node);
 
-std::map<string, FillerFunction> filler_functions_map = { 
-	{ "fmiModelDescription", &FillModelDescription },
-	{ "fmiModelDescription/CoSimulation", &FillCoSimulation}
-};
+std::map<string, FillerFunction> filler_functions_map;
 
-void FillChilds(shared_ptr<Node> node, shared_ptr<ModelDescription> model_description) {
-	for (auto& child : node->childs()) filler_functions_map[child->name()](model_description, child);
+void CallFillerIfItExists(shared_ptr<Node> child, shared_ptr<ModelDescription>& model_description) {
+	if (filler_functions_map.find(child->name()) != filler_functions_map.end())
+		filler_functions_map[child->name()](model_description, child);
 }
 
-void FillModelDescription (shared_ptr<ModelDescription> model_description, shared_ptr<Node> node) {
+void FillChilds(shared_ptr<Node>& node, shared_ptr<ModelDescription>& model_description) {
+	for (auto& child : node->childs()) CallFillerIfItExists(child, model_description);
+}
+
+void FillModelDescription (shared_ptr<ModelDescription>& model_description, shared_ptr<Node>& node) {
 	for (auto& attribute_pair : node->attributes()) {
 		string field_name(attribute_pair.first);
 		string field_value(attribute_pair.second);
@@ -43,7 +47,7 @@ void FillModelDescription (shared_ptr<ModelDescription> model_description, share
 	FillChilds(node, model_description);
 };
 
-void FillCoSimulation(shared_ptr<ModelDescription> model_description, shared_ptr<Node> node) {
+void FillCoSimulation(shared_ptr<ModelDescription>& model_description, shared_ptr<Node>& node) {
 	CoSimulation co_simulation;
 	for (auto& attribute_pair : node->attributes()) {
 		string field_name(attribute_pair.first);
@@ -72,10 +76,14 @@ ptree EmptyPTree(){
 	return tree;
 }
 
-ModelDescriptionDeserializer::ModelDescriptionDeserializer(){}
+ModelDescriptionDeserializer::ModelDescriptionDeserializer(){
+	filler_functions_map["fmiModelDescription"] = &FillModelDescription;
+	filler_functions_map["fmiModelDescription/CoSimulation"] = &FillCoSimulation;
+}
+
 ModelDescriptionDeserializer::~ModelDescriptionDeserializer() {}
 
-shared_ptr<Node> FillElementTreeRoot(PtreePointer raw_tree){
+shared_ptr<Node> FillElementTreeRoot(PtreePointer& raw_tree){
 	shared_ptr<Node> element_tree_root(make_shared<Node>());
 	NodeFiller node_filler;
 	node_filler.Fill(element_tree_root, "fmiModelDescription", raw_tree);
