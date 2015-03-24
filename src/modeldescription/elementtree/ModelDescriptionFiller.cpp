@@ -106,7 +106,6 @@ void ModelDescriptionFiller::FillAndAddScalarVariable(ModelDescription& model_de
 	ScalarVariable scalar_variable;
 	filler.Fill(scalar_variable, node);
 	model_description.AddModelVariable(scalar_variable);
-	model_description.AddVariableName(scalar_variable.name());
 }
 
 void ModelDescriptionFiller::FillAndSetModelStructure(ModelDescription& model_description, shared_ptr<Node> node){

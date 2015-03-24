@@ -12,6 +12,7 @@
 #include "ModelStructure.h"
 #include "ModelExchange.h"
 #include "CoSimulation.h"
+#include <map>
 
 using std::string;
 using std::vector;
@@ -36,13 +37,11 @@ private:
 	vector<Category> log_categories_;
 	DefaultExperiment default_experiment_;
 	vector<Tool> vendor_annotations_;
-	vector<ScalarVariable> model_variables_list_;
 	ModelStructure model_structure_;
 	ModelExchange model_exchange_;
 	CoSimulation co_simulation_;
-	unordered_map<string, ScalarVariable> model_variables_;
+	std::map<std::string, shared_ptr<ScalarVariable>> model_variables_;
 	Capabilities capabilities_;
-	vector<string> variables_names_;
 public:
 	void number_of_event_indicators(int new_number_of_event_indicators);
 	int number_of_event_indicators();
@@ -86,7 +85,7 @@ public:
 	void model_exchange(ModelExchange new_model_exchange);
 	CoSimulation co_simulation();
 	void co_simulation(CoSimulation new_co_simulation);
-	unordered_map<string, ScalarVariable> model_variables();
+	std::map<string, shared_ptr<ScalarVariable>> model_variables();
 	Capabilities capabilities();
 	void capabilities(Capabilities new_capabilities);
 	vector<string> variables_names();

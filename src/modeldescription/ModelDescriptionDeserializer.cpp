@@ -116,17 +116,76 @@ void FillVendorAnnotationsTool(shared_ptr<ModelDescription>& model_description, 
 }
 
 void FillModelVariables(shared_ptr<ModelDescription>& model_description, shared_ptr<Node>& node) {
-	for (auto& child : node->childs())
-		FillChilds(child, model_description);
+	FillChilds(node, model_description);
+}
+
+void FillModelVariablesScalarVariable(shared_ptr<ModelDescription>& model_description, shared_ptr<Node>& node) {
+	ScalarVariable scalar_variable;
+	for (auto& pair : node->attributes()) {
+		string field_name(pair.first);
+		string field_value(pair.second);
+		if(field_name == "causality") scalar_variable.causality(field_value);
+		else if(field_name == "variability") scalar_variable.variability(field_value);
+		else if(field_name == "name") scalar_variable.name(field_value);
+		else if(field_name == "description") scalar_variable.description(field_value);
+		else if(field_name == "initial") scalar_variable.initial(field_value);
+		else if(field_name == "previous") scalar_variable.previous(stoi(field_value));
+		else if(field_name == "canHandleMultipleSetPerTimeInstant") scalar_variable.can_handle_multiple_set_per_time_instant(field_value == "true");
+	}
+	auto child = node->childs().at(0);
+	if (child->name() == "fmiModelDescription/ModelVariables/ScalarVariable/Boolean"){
+		BooleanType boolean_type;
+		for (auto& pair : child->attributes()) {
+			string field_name(pair.first);
+			string field_value(pair.second);
+			if(field_name == "declaredType") boolean_type.declared_type(field_value);
+			if(field_name == "start") boolean_type.start(field_value == "true");
+		}
+		scalar_variable.boolean(make_shared<BooleanType>(boolean_type));
+	} else if (child->name() == "fmiModelDescription/ModelVariables/ScalarVariable/Real") {
+		RealType real_type;
+		for(auto& pair : child->attributes()){
+			string field_name(pair.first);
+			string field_value(pair.second);
+			if(field_name == "declaredType") real_type.declared_type(field_value);
+			else if(field_name == "quantity") real_type.quantity(field_value);
+			else if(field_name == "unit") real_type.unit(field_value);
+			else if(field_name == "relativeQuantity") real_type.relative_quantity(field_value == "true");
+			else if(field_name == "min") real_type.min(stod(field_value));
+			else if(field_name == "max") real_type.max(stod(field_value));
+			else if(field_name == "nominal") real_type.nominal(stod(field_value));
+			else if(field_name == "unbound") real_type.unbound(field_value == "true");
+			else if(field_name == "start") real_type.start(stod(field_value));
+			else if(field_name == "derivative") real_type.derivative(stoi(field_value));
+			else if(field_name == "reinit") real_type.reinit(field_value == "true");
+		}
+		scalar_variable.real(make_shared<RealType>(real_type));
+	} else if (child->name() == "fmiModelDescription/ModelVariables/ScalarVariable/Integer") {
+		IntegerType integer_type;
+		for(auto& pair : child->attributes()){
+			string field_name(pair.first);
+			string field_value(pair.second);
+			if(field_name == "declaredType") integer_type.declared_type(field_value);
+			else if(field_name == "quantity") integer_type.quantity(field_value);
+			else if(field_name == "min") integer_type.min(stod(field_value));
+			else if(field_name == "max") integer_type.max(stod(field_value));
+			else if(field_name == "start") integer_type.start(stoi(field_value));
+		}
+		scalar_variable.integer(make_shared<IntegerType>(integer_type));
+	} else if (child->name() == "fmiModelDescription/ModelVariables/ScalarVariable/String") {
+		StringType string_type;
+		for(auto& pair : child->attributes()){
+			string field_name(pair.first);
+			string field_value(pair.second);
+			if(field_name == "declaredType") string_type.declared_type(field_value);
+		}
+		scalar_variable.stringg(make_shared<StringType>(string_type));
+	}
+	model_description->AddModelVariable(scalar_variable);
 }
 
 
 
-
-ptree EmptyPTree(){
-	ptree tree;
-	return tree;
-}
 
 ModelDescriptionDeserializer::ModelDescriptionDeserializer(){
 	filler_functions_map["fmiModelDescription"] = &FillModelDescription;
@@ -136,9 +195,16 @@ ModelDescriptionDeserializer::ModelDescriptionDeserializer(){
 	filler_functions_map["fmiModelDescription/ModelExchange"] = &FillModelExchange;
 	filler_functions_map["fmiModelDescription/VendorAnnotations"] = &FillVendorAnnotations;
 	filler_functions_map["fmiModelDescription/VendorAnnotations/Tool"] = &FillVendorAnnotationsTool;
+	filler_functions_map["fmiModelDescription/ModelVariables"] = &FillModelVariables;
+	filler_functions_map["fmiModelDescription/ModelVariables/ScalarVariable"] = &FillModelVariablesScalarVariable;
 }
 
 ModelDescriptionDeserializer::~ModelDescriptionDeserializer() {}
+
+ptree EmptyPTree(){
+	ptree tree;
+	return tree;
+}
 
 shared_ptr<Node> FillElementTreeRoot(PtreePointer& raw_tree){
 	shared_ptr<Node> element_tree_root(make_shared<Node>());

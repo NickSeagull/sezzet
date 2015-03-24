@@ -1,4 +1,5 @@
 #include "ModelDescription.h"
+#include <memory>
 
 ModelDescription::ModelDescription(){}
 
@@ -33,16 +34,17 @@ vector<Category> ModelDescription::log_categories(){return log_categories_;}
 DefaultExperiment ModelDescription::default_experiment(){return default_experiment_;}
 void ModelDescription::default_experiment(DefaultExperiment new_default_experiment){default_experiment_ = new_default_experiment;}
 vector<Tool> ModelDescription::vendor_annotations(){return vendor_annotations_;}
-vector<ScalarVariable> ModelDescription::model_variables_list(){return model_variables_list_;}
 ModelStructure ModelDescription::model_structure(){return model_structure_;}
 void ModelDescription::model_structure(ModelStructure new_model_structure){model_structure_ = new_model_structure;}
 ModelExchange ModelDescription::model_exchange(){return model_exchange_;}
 void ModelDescription::model_exchange(ModelExchange new_model_exchange){model_exchange_ = new_model_exchange;}
 CoSimulation ModelDescription::co_simulation(){return co_simulation_;}
 void ModelDescription::co_simulation(CoSimulation new_co_simulation){co_simulation_ = new_co_simulation;}
-Capabilities ModelDescription::capabilities(){return capabilities_;}
+
+std::map<string, shared_ptr<ScalarVariable>> ModelDescription::model_variables() {return model_variables_;}
+
+Capabilities ModelDescription::capabilities() { return capabilities_; }
 void ModelDescription::capabilities(Capabilities new_capabilities){capabilities_ = new_capabilities;}
-vector<string> ModelDescription::variables_names(){return variables_names_;}
 
 void ModelDescription::AddUnitDefinition(Unit unit_definition) {
 	unit_definitions_.push_back(unit_definition);
@@ -61,12 +63,9 @@ void ModelDescription::AddVendorAnnotations(Tool vendor_annotations) {
 }
 
 void ModelDescription::AddModelVariable(ScalarVariable model_variable) {
-
+	model_variables_[model_variable.name()] = std::make_shared<ScalarVariable>(model_variable);
 }
 
-void ModelDescription::AddVariableName(string variable_name) {
-	variables_names_.push_back(variable_name);
-}
 
 
 
