@@ -184,6 +184,93 @@ void FillModelVariablesScalarVariable(shared_ptr<ModelDescription>& model_descri
 	model_description->AddModelVariable(scalar_variable);
 }
 
+void FillUnitDefinitions(shared_ptr<ModelDescription>& model_description, shared_ptr<Node>& node) {
+	FillChilds(node, model_description);
+}
+
+void FillUnitDefinitionsUnit(shared_ptr<ModelDescription>& model_description, shared_ptr<Node>& node) {
+	Unit unit;
+	for(auto& pair : node->attributes()){
+		string field_name(pair.first);
+		string field_value(pair.second);
+		if(field_name == "name") unit.name(field_value);
+	}
+	for(auto& child : node->childs()){
+		if (child->name() == "baseUnit") {
+			BaseUnit base_unit;
+			for(auto& pair : child->attributes()){
+				string field_name(pair.first);
+				string field_value(pair.second);
+				if(field_name == "kg") base_unit.kg(stoi(field_value));
+				if(field_name == "m") base_unit.m(stoi(field_value));
+				if(field_name == "s") base_unit.s(stoi(field_value));
+				if(field_name == "a") base_unit.a(stoi(field_value));
+				if(field_name == "k") base_unit.k(stoi(field_value));
+				if(field_name == "mol") base_unit.mol(stoi(field_value));
+				if(field_name == "cd") base_unit.cd(stoi(field_value));
+				if(field_name == "rad") base_unit.rad(stoi(field_value));
+				if(field_name == "factor") base_unit.factor(stod(field_value));
+				if(field_name == "offset") base_unit.offset(stod(field_value));
+			}
+			unit.base_unit(make_shared<BaseUnit>(base_unit));
+		} else if (child->name() == "displayUnit") {
+			DisplayUnit display_unit;
+			for(auto& pair : child->attributes()){
+				string field_name(pair.first);
+				string field_value(pair.second);
+				if(field_name == "name") display_unit.name(field_value);
+				if(field_name == "factor") display_unit.factor(stod(field_value));
+				if(field_name == "offset") display_unit.offset(stod(field_value));
+			}
+			unit.AddDisplayUnit(display_unit);
+		}
+	}
+	model_description->AddUnitDefinition(unit);
+}
+
+void FillDefaultExperiment(shared_ptr<ModelDescription>& model_description, shared_ptr<Node>& node) {
+	DefaultExperiment default_experiment;
+	for(auto& pair : node->attributes()){
+		string field_name(pair.first);
+		string field_value(pair.second);
+		if(field_name == "stepSize") default_experiment.step_size(stod(field_value));
+		if(field_name == "stopTime") default_experiment.stop_time(stod(field_value));
+		if(field_name == "startTime") default_experiment.start_time(stod(field_value));
+		if(field_name == "tolerance") default_experiment.tolerance(stod(field_value));
+	}
+	model_description->default_experiment(default_experiment);
+}
+
+void FillModelStructure(shared_ptr<ModelDescription>& model_description, shared_ptr<Node>& node) {
+	ModelStructure model_structure;
+	//filler.Fill(model_structure, node);
+	for(auto& child : node->childs()){
+		if (child->name() == "Outputs"){
+			Unknown unknown;
+			for(auto& pair : child->attributes()){
+				string field_name(pair.first);
+				string field_value(pair.second);
+				if(field_name == "index") unknown.index(stoi(field_value));
+				else if(field_name == "dependencies") unknown.dependencies(field_value);
+				else if(field_name == "dependenciesKind") unknown.dependencies_kind(field_value);
+			}
+			model_structure.AddOutput(unknown);
+		} else if (child->name() == "Derivatives"){
+			for(auto& child : child->childs()){
+				Unknown unknown;
+				for(auto& pair : child->attributes()){
+					string field_name(pair.first);
+					string field_value(pair.second);
+					if(field_name == "index") unknown.index(stoi(field_value));
+					else if(field_name == "dependencies") unknown.dependencies(field_value);
+					else if(field_name == "dependenciesKind") unknown.dependencies_kind(field_value);
+				}
+				model_structure.AddDerivative(unknown);
+			}
+		}
+	}
+	model_description->model_structure(model_structure);
+}
 
 
 
@@ -197,6 +284,10 @@ ModelDescriptionDeserializer::ModelDescriptionDeserializer(){
 	filler_functions_map["fmiModelDescription/VendorAnnotations/Tool"] = &FillVendorAnnotationsTool;
 	filler_functions_map["fmiModelDescription/ModelVariables"] = &FillModelVariables;
 	filler_functions_map["fmiModelDescription/ModelVariables/ScalarVariable"] = &FillModelVariablesScalarVariable;
+	filler_functions_map["fmiModelDescription/UnitDefinitions"] = &FillUnitDefinitions;
+	filler_functions_map["fmiModelDescription/UnitDefinitions/Unit"] = &FillUnitDefinitionsUnit;
+	filler_functions_map["fmiModelDescription/DefaultExperiment"] = &FillDefaultExperiment;
+	filler_functions_map["fmiModelDescription/ModelStructure"] = &FillModelStructure;
 }
 
 ModelDescriptionDeserializer::~ModelDescriptionDeserializer() {}
