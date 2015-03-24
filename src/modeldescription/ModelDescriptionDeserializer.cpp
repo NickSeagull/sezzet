@@ -243,7 +243,6 @@ void FillDefaultExperiment(shared_ptr<ModelDescription>& model_description, shar
 
 void FillModelStructure(shared_ptr<ModelDescription>& model_description, shared_ptr<Node>& node) {
 	ModelStructure model_structure;
-	//filler.Fill(model_structure, node);
 	for(auto& child : node->childs()){
 		if (child->name() == "Outputs"){
 			Unknown unknown;
