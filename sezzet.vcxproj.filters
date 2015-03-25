@@ -18,31 +18,7 @@
     <ClCompile Include="src\modeldescription\ModelDescriptionDeserializer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\modeldescription\elementtree\BaseUnitFiller.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\elementtree\BooleanTypeFiller.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\elementtree\CategoryFiller.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\elementtree\CoSimulationFiller.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\elementtree\DefaultExperimentFiller.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\elementtree\DisplayUnitFiller.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\elementtree\IntegerTypeFiller.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\modeldescription\elementtree\ModelDescriptionFiller.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\elementtree\ModelExchangeFiller.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\modeldescription\elementtree\ModelStructureFiller.cpp">
@@ -54,16 +30,7 @@
     <ClCompile Include="src\modeldescription\elementtree\NodeFiller.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\modeldescription\elementtree\RealTypeFiller.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\elementtree\ScalarVariableFiller.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\modeldescription\elementtree\SourceFileFiller.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modeldescription\elementtree\StringTypeFiller.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\modeldescription\elementtree\ToolFiller.cpp">
@@ -242,31 +209,7 @@
     <ClInclude Include="src\modeldescription\ModelDescriptionDeserializer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\modeldescription\elementtree\BaseUnitFiller.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\elementtree\BooleanTypeFiller.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\elementtree\CategoryFiller.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\elementtree\CoSimulationFiller.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\elementtree\DefaultExperimentFiller.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\elementtree\DisplayUnitFiller.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\elementtree\IntegerTypeFiller.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\modeldescription\elementtree\ModelDescriptionFiller.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\elementtree\ModelExchangeFiller.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\modeldescription\elementtree\ModelStructureFiller.h">
@@ -278,16 +221,7 @@
     <ClInclude Include="src\modeldescription\elementtree\NodeFiller.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\modeldescription\elementtree\RealTypeFiller.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\elementtree\ScalarVariableFiller.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\modeldescription\elementtree\SourceFileFiller.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modeldescription\elementtree\StringTypeFiller.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\modeldescription\elementtree\ToolFiller.h">
