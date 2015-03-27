@@ -46,7 +46,7 @@ void FillModelDescription (shared_ptr<ModelDescription>& model_description, shar
 	for (auto& attribute_pair : node->attributes())
 		ProcessModelDescriptionAtribute(attribute_pair.first, model_description, attribute_pair.second);
 	FillChilds(node, model_description);
-};
+}
 
 void ProcessCoSimulationAttribute(string field_name, CoSimulation &co_simulation, string field_value) {
 	if (field_name == "modelIdentifier") co_simulation.model_identifier(field_value);
@@ -321,9 +321,9 @@ void MakeAndAddDerivative(shared_ptr<Node> child, ModelStructure &model_structur
 }
 
 void ProcessModelStructureChild(shared_ptr<Node> child, ModelStructure &model_structure) {
-	if (child->name() == "Outputs") 
+	if (child->name() == "fmiModelDescription/ModelStructure/Outputs") 
 		MakeAndAddOutput(child, model_structure);
-	else if (child->name() == "Derivatives") 
+	else if (child->name() == "fmiModelDescription/ModelStructure/Derivatives") 
 		MakeAndAddDerivative(child, model_structure);
 }
 
@@ -333,6 +333,8 @@ void FillModelStructure(shared_ptr<ModelDescription>& model_description, shared_
 		ProcessModelStructureChild(child, model_structure);
 	model_description->model_structure(model_structure);
 }
+
+
 
 
 
